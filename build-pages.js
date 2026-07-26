@@ -37,6 +37,13 @@ function seoMeta(page) {
       ogTitle: '客户案例 | JiduOS 电竞优化 | 极度调试',
       ld: '<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"极度调试","url":"https://jiduos.cn"}</script>'
     },
+    notfound: {
+      desc: '页面未找到 — JiduOS 电竞优化 | 极度调试',
+      keywords: 'JiduOS,极度调试',
+      canonical: 'https://jiduos.cn/404.html',
+      ogTitle: '页面未找到 | JiduOS 电竞优化',
+      ld: ''
+    },
     contact: {
       desc: '联系极度调试 — 扫码添加企业微信，备注"优化"免费分析你的电脑配置。卡顿、掉帧、蓝屏？远程一对一解决。',
       keywords: '电脑优化咨询,远程调试联系,极度调试微信,电竞优化咨询,免费配置分析,JiduOS',
@@ -99,12 +106,18 @@ const pricingPage = buildPage(pricingTitle, pricingContent, 'pricing');
 const contactPage = buildPage(contactTitle, contactContent, 'contact');
 const casesPage = buildPage(casesTitle, casesContent, 'cases');
 
+// ===== PAGE 5: 404 =====
+const notFoundTitle = '<title>页面未找到 | JiduOS 电竞优化</title>';
+const notFoundContent = `<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:70vh;text-align:center;padding:40px 24px"><div style="font-size:120px;font-weight:900;color:#0cf;line-height:1;opacity:.3">404</div><h1 style="color:#fff;font-size:28px;margin:8px 0 16px">页面未找到</h1><p style="color:#688088;font-size:15px;margin-bottom:36px;max-width:400px">你访问的页面不存在或已被移动。<br>可能是链接过期了，或者输错了地址。</p><a href="/" style="display:inline-flex;align-items:center;gap:8px;padding:15px 38px;border-radius:10px;background:linear-gradient(135deg,#00a8d8,#0078b0);color:#fff;font-weight:700;font-size:16px;text-decoration:none;box-shadow:0 4px 24px rgba(0,160,220,.3);transition:all .3s">← 返回首页</a></div>`;
+const notFoundPage = buildPage(notFoundTitle, notFoundContent, 'notfound');
+
 // Write to pages repo
 const outDir = 'd:/AI/jiduos-pages';
 fs.writeFileSync(outDir + '/index.html', home);
 fs.writeFileSync(outDir + '/pricing.html', pricingPage);
 fs.writeFileSync(outDir + '/contact.html', contactPage);
 fs.writeFileSync(outDir + '/cases.html', casesPage);
+fs.writeFileSync(outDir + '/404.html', notFoundPage);
 
 console.log('home: ' + home.length + ' chars');
 console.log('pricing: ' + pricingPage.length + ' chars');
