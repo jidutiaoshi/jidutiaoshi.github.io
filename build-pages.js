@@ -159,7 +159,7 @@ fs.writeFileSync(outDir + '/robots.txt', robotsTxt);
 console.log('robots.txt updated');
 
 // manifest.json
-const manifest = JSON.stringify({name:'JiduOS 电竞优化系统',short_name:'JiduOS',description:'Windows电竞级系统精调，远程一对一',start_url:'/',display:'standalone',background_color:'#030609',theme_color:'#00ccff',icons:[{src:'/jiduLOGO-400.png',sizes:'400x400',type:'image/png',purpose:'any maskable'}]});
+const manifest = JSON.stringify({name:'JiduOS 电竞优化系统',short_name:'JiduOS',description:'Windows电竞级系统精调，远程一对一',start_url:'/',display:'standalone',background_color:'#030609',theme_color:'#00ccff',icons:[{src:'/jiduLOGO-400.png',sizes:'192x192',type:'image/png'},{src:'/jiduLOGO-400.png',sizes:'512x512',type:'image/png',purpose:'any maskable'}]});
 fs.writeFileSync(outDir + '/manifest.json', manifest);
 console.log('manifest updated');
 
