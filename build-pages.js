@@ -136,6 +136,16 @@ const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 fs.writeFileSync(outDir + '/sitemap.xml', sitemap);
 console.log('sitemap updated');
 
+// robots.txt
+const robotsTxt = `User-agent: *
+Allow: /
+Disallow: /404.html
+
+Sitemap: https://jiduos.cn/sitemap.xml
+`;
+fs.writeFileSync(outDir + '/robots.txt', robotsTxt);
+console.log('robots.txt updated');
+
 // Push to Baidu
 const http = require('http');
 const baiduCfg = JSON.parse(fs.readFileSync(__dirname+'/baidu-config.json','utf8'));
