@@ -58,7 +58,7 @@ const casesContent = '<div class="page-hero"><h1>客户案例</h1><p class="sub"
 
 // Build pages
 function buildPage(title, content, active) {
-  return head + title + seoMeta + `<style>${css}</style></head><body>` + nav(active) + content + footer + script + `</body></html>`;
+  return head + title + seoMeta + `<style>${css}</style><script>var _hmt=_hmt||[];(function(){var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?5a0eae63f72b9f51aec6e40fdb36573f";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s)})();</script></head><body>` + nav(active) + content + footer + script + `</body></html>`;
 }
 
 const home = buildPage(homeTitle, homeContent, 'home');
