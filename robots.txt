@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
-Disallow: /node_modules/
+Disallow: /404.html
+
 Sitemap: https://jiduos.cn/sitemap.xml
