@@ -517,17 +517,7 @@ h2 .hl{
   50%{background-position:100% 50%}
 }
 
-/* Grid dot overlay - subtle dot pattern */
-section::before{
-  content:'';
-  position:absolute;inset:0;pointer-events:none;z-index:0;
-  opacity:.03;
-  background-image:radial-gradient(circle,rgba(0,200,255,.8) 1px,transparent 1px);
-  background-size:32px 32px;
-}
-section.hero::before,section.page-hero::before,.marquee-strip::before{
-  background-image:none !important;
-}
+/* Grid dot overlay - disabled (conflicts with backgrounds) */
 
 /* Badge tag sweep - light sweep across badges */
 .case-card-badge::after,.hero-badge::after{
