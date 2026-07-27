@@ -1,68 +1,68 @@
-// WebGL 3D Particle Starfield - creates its own canvas, coexists with old code
+// WebGL Aurora Background - full-screen shader flowing color field
 (function(){
-// Try WebGL
 var test=document.createElement("canvas");
-var gl=test.getContext("webgl",{alpha:true,antialias:false})||test.getContext("experimental-webgl",{alpha:true,antialias:false});
-if(!gl)return; // No WebGL support, old 2D starfield continues working
+var gl=test.getContext("webgl2",{alpha:true,premultipliedAlpha:true})||test.getContext("webgl",{alpha:true,premultipliedAlpha:true})||test.getContext("experimental-webgl",{alpha:true,premultipliedAlpha:true});
+if(!gl){return;}
 
-// WebGL available - create our own canvas and hide the old one
-var oldCanvas=document.getElementById("starfield");
-if(oldCanvas)oldCanvas.style.display="none";
+// Hide old canvas, create our own
+var oldC=document.getElementById("starfield");
+if(oldC)oldC.style.display="none";
 
 var c=document.createElement("canvas");
 c.id="gl-starfield";
-c.style.cssText="position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.5";
+c.style.cssText="position:fixed;inset:0;z-index:0;pointer-events:none";
 document.body.prepend(c);
 
-gl=c.getContext("webgl",{alpha:true,antialias:false})||c.getContext("experimental-webgl",{alpha:true,antialias:false});
+gl=c.getContext("webgl2",{alpha:true,premultipliedAlpha:true})||c.getContext("webgl",{alpha:true,premultipliedAlpha:true})||c.getContext("experimental-webgl",{alpha:true,premultipliedAlpha:true});
 if(!gl)return;
 
+// Vertex shader — full screen triangle
 var vs=gl.createShader(gl.VERTEX_SHADER);
-gl.shaderSource(vs,"attribute vec2 p;attribute float s;attribute float a;attribute vec3 cl;varying float va;varying vec3 vc;uniform vec2 r;uniform float t;uniform vec2 m;uniform float d;void main(){vec2 mp=p+m*a*0.02;gl_Position=vec4(mp,0,1);gl_PointSize=s*d*(0.8+a*1.2);va=a;vc=cl;}");
+gl.shaderSource(vs,"attribute vec2 p;varying vec2 uv;void main(){uv=p*.5+.5;gl_Position=vec4(p,0,1);}");
 gl.compileShader(vs);
 if(!gl.getShaderParameter(vs,gl.COMPILE_STATUS))return;
+
+// Fragment shader — organic color field
+// Uses nested trig functions to create flowing aurora-like patterns
 var fs=gl.createShader(gl.FRAGMENT_SHADER);
-gl.shaderSource(fs,"precision mediump float;varying float va;varying vec3 vc;void main(){float dist=length(gl_PointCoord-0.5)*2.0;float glow=1.0-smoothstep(0.0,1.0,dist);glow=pow(glow,1.5);gl_FragColor=vec4(vc,glow*va);}");
+gl.shaderSource(fs,"precision highp float;uniform float t;uniform vec2 r;varying vec2 uv;void main(){vec2 u=(uv*2.-1.)*r/min(r.x,r.y);float d=-t*.8,a=0.;for(float i=0.;i<6.;i++){a+=cos(i-d-a*u.x);d+=sin(u.y*i+a);}d+=t*.5;vec3 col=vec3(cos(u*vec2(d,a))*.5+.5,cos(a+d)*.4+.6);col=cos(col*cos(vec3(d,a,2.5))*.5+.5);col=col*vec3(0.15,0.55,1.0)+vec3(0.02,0.04,0.10);gl_FragColor=vec4(col,0.18);}");
 gl.compileShader(fs);
 if(!gl.getShaderParameter(fs,gl.COMPILE_STATUS))return;
+
 var prog=gl.createProgram();
 gl.attachShader(prog,vs);
 gl.attachShader(prog,fs);
 gl.linkProgram(prog);
 if(!gl.getProgramParameter(prog,gl.LINK_STATUS))return;
 gl.useProgram(prog);
-var aP=gl.getAttribLocation(prog,"p"),aS=gl.getAttribLocation(prog,"s"),aA=gl.getAttribLocation(prog,"a"),aC=gl.getAttribLocation(prog,"cl");
-var uR=gl.getUniformLocation(prog,"r"),uT=gl.getUniformLocation(prog,"t"),uM=gl.getUniformLocation(prog,"m"),uD=gl.getUniformLocation(prog,"d");
-var N=1200,pos=new Float32Array(N*2),siz=new Float32Array(N),alp=new Float32Array(N),col=new Float32Array(N*3),vel=new Float32Array(N*2),dep=new Float32Array(N);
-for(var i=0;i<N;i++){
-pos[i*2]=(Math.random()-0.5)*2.4;pos[i*2+1]=(Math.random()-0.5)*2.4;dep[i]=Math.random();var dd=dep[i];
-siz[i]=0.8+dd*3.5;alp[i]=0.15+dd*0.55;col[i*3]=0.0+dd*0.15;col[i*3+1]=0.5+dd*0.5;col[i*3+2]=0.7+dd*0.3;
-vel[i*2]=(Math.random()-0.5)*0.0003;vel[i*2+1]=(Math.random()-0.5)*0.0002-0.0001;
+
+// Full screen triangle (covers viewport with 3 vertices)
+var buf=gl.createBuffer();
+gl.bindBuffer(gl.ARRAY_BUFFER,buf);
+gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,3,-1,-1,3]),gl.STATIC_DRAW);
+var loc=gl.getAttribLocation(prog,"p");
+gl.enableVertexAttribArray(loc);
+gl.vertexAttribPointer(loc,2,gl.FLOAT,false,0,0);
+
+var uT=gl.getUniformLocation(prog,"t");
+var uR=gl.getUniformLocation(prog,"r");
+
+function resize(){
+var dpr=Math.min(window.devicePixelRatio||1,2);
+c.width=c.clientWidth*dpr;
+c.height=c.clientHeight*dpr;
+gl.viewport(0,0,c.width,c.height);
+gl.uniform2f(uR,c.width,c.height);
 }
-var bP=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,bP);gl.bufferData(gl.ARRAY_BUFFER,pos,gl.DYNAMIC_DRAW);
-var bS=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,bS);gl.bufferData(gl.ARRAY_BUFFER,siz,gl.STATIC_DRAW);
-var bA=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,bA);gl.bufferData(gl.ARRAY_BUFFER,alp,gl.DYNAMIC_DRAW);
-var bC=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,bC);gl.bufferData(gl.ARRAY_BUFFER,col,gl.STATIC_DRAW);
-function resize(){c.width=window.innerWidth;c.height=window.innerHeight;gl.viewport(0,0,c.width,c.height);gl.uniform2f(uR,c.width,c.height);gl.uniform1f(uD,window.devicePixelRatio||1);}
-var mx=0,my=0,tmx=0,tmy=0,st=performance.now(),animId;
-document.addEventListener("mousemove",function(e){tmx=(e.clientX/window.innerWidth-0.5)*2;tmy=-(e.clientY/window.innerHeight-0.5)*2;});
-function draw(now){
-var dt=Math.min((now-st)/1000,0.1);st=now;mx+=(tmx-mx)*0.05;my+=(tmy-my)*0.05;
-for(var i=0;i<N;i++){
-pos[i*2]+=vel[i*2]*dt*60;pos[i*2+1]+=vel[i*2+1]*dt*60;
-if(pos[i*2]>1.3)pos[i*2]=-1.3;if(pos[i*2]<-1.3)pos[i*2]=1.3;
-if(pos[i*2+1]>1.3){pos[i*2+1]=-1.3;pos[i*2]=(Math.random()-0.5)*2.6;}
-if(pos[i*2+1]<-1.3){pos[i*2+1]=1.3;pos[i*2]=(Math.random()-0.5)*2.6;}
-alp[i]=(0.15+dep[i]*0.55)+Math.sin(now*0.001+i*0.1)*0.05;
-}
-gl.bindBuffer(gl.ARRAY_BUFFER,bP);gl.bufferSubData(gl.ARRAY_BUFFER,0,pos);gl.enableVertexAttribArray(aP);gl.vertexAttribPointer(aP,2,gl.FLOAT,false,0,0);
-gl.bindBuffer(gl.ARRAY_BUFFER,bS);gl.enableVertexAttribArray(aS);gl.vertexAttribPointer(aS,1,gl.FLOAT,false,0,0);
-gl.bindBuffer(gl.ARRAY_BUFFER,bA);gl.bufferSubData(gl.ARRAY_BUFFER,0,alp);gl.enableVertexAttribArray(aA);gl.vertexAttribPointer(aA,1,gl.FLOAT,false,0,0);
-gl.bindBuffer(gl.ARRAY_BUFFER,bC);gl.enableVertexAttribArray(aC);gl.vertexAttribPointer(aC,3,gl.FLOAT,false,0,0);
-gl.uniform1f(uT,now*0.001);gl.uniform2f(uM,mx,my);gl.enable(gl.BLEND);gl.blendFunc(gl.SRC_ALPHA,gl.ONE);gl.clear(gl.COLOR_BUFFER_BIT);gl.drawArrays(gl.POINTS,0,N);
-animId=requestAnimationFrame(draw);
-}
-document.addEventListener("visibilitychange",function(){if(document.hidden){cancelAnimationFrame(animId);}else{st=performance.now();animId=requestAnimationFrame(draw);}});
+resize();
 window.addEventListener("resize",resize);
-resize();animId=requestAnimationFrame(draw);
+
+// Render loop
+function loop(ts){
+requestAnimationFrame(loop);
+gl.uniform1f(uT,ts*0.001);
+gl.blendFunc(gl.SRC_ALPHA,gl.ONE_MINUS_SRC_ALPHA);
+gl.drawArrays(gl.TRIANGLES,0,3);
+}
+requestAnimationFrame(loop);
 })();

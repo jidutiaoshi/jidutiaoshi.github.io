@@ -273,5 +273,7 @@ html::before{
   100%{opacity:1;transform:translateX(-50%) scale(1.2)}
 }
 
-/* WebGL canvas - more visible */
-#gl-starfield{opacity:0.7 !important}
+/* WebGL aurora canvas */
+#gl-starfield{opacity:1 !important}
+/* Reduce competing body glow since aurora handles it */
+body::before{opacity:0.35 !important}
