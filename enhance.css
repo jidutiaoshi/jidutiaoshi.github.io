@@ -277,3 +277,99 @@ html::before{
 #gl-starfield{opacity:1 !important}
 /* Reduce competing body glow since aurora handles it */
 body::before{opacity:0.35 !important}
+
+/* ══════════════════════════════════════ */
+/* 17. STAGGERED CARD ENTRANCE */
+/* ══════════════════════════════════════ */
+.pain:nth-child(1),.step-box:nth-child(1),.testimonial:nth-child(1),.trust-item:nth-child(1),.platform-card:nth-child(1),.feat-card:nth-child(1),.case-card:nth-child(1),.policy-card:nth-child(1){animation:cardStaggerIn .5s var(--ease-out-expo) .05s both}
+.pain:nth-child(2),.step-box:nth-child(2),.testimonial:nth-child(2),.trust-item:nth-child(2),.platform-card:nth-child(2),.feat-card:nth-child(2),.case-card:nth-child(2),.policy-card:nth-child(2){animation:cardStaggerIn .5s var(--ease-out-expo) .12s both}
+.pain:nth-child(3),.step-box:nth-child(3),.testimonial:nth-child(3),.trust-item:nth-child(3),.platform-card:nth-child(3),.feat-card:nth-child(3),.case-card:nth-child(3),.policy-card:nth-child(3){animation:cardStaggerIn .5s var(--ease-out-expo) .19s both}
+.pain:nth-child(4),.step-box:nth-child(4),.platform-card:nth-child(4),.feat-card:nth-child(4),.case-card:nth-child(4),.policy-card:nth-child(4){animation:cardStaggerIn .5s var(--ease-out-expo) .26s both}
+.pain:nth-child(5),.step-box:nth-child(5),.case-card:nth-child(5),.feat-card:nth-child(5){animation:cardStaggerIn .5s var(--ease-out-expo) .33s both}
+@keyframes cardStaggerIn{
+  from{opacity:0;transform:translateY(24px) scale(.97)}
+  to{opacity:1;transform:translateY(0) scale(1)}
+}
+
+/* 18. Button press effect */
+.btn:active{
+  transform:scale(.96) !important;
+  transition:transform .1s var(--ease-smooth) !important;
+}
+
+/* 19. Hero stats counter glow */
+.hero-stats .s .n.cyan{
+  text-shadow:0 0 20px rgba(0,200,255,.4),0 0 40px rgba(0,200,255,.15);
+}
+.hero-stats .s .n.gold{
+  text-shadow:0 0 20px rgba(212,168,64,.4),0 0 40px rgba(212,168,64,.15);
+}
+
+/* 20. Section alternating subtle gradient */
+section:nth-child(even):not(.hero):not(.page-hero):not(.marquee-strip){
+  background:linear-gradient(180deg,transparent,rgba(0,200,255,.008),transparent);
+}
+
+/* 21. Hero badge breathing */
+.hero-badge{
+  animation:badgeBreathe 3s ease-in-out infinite;
+}
+@keyframes badgeBreathe{
+  0%,100%{box-shadow:0 0 0 rgba(0,200,255,0)}
+  50%{box-shadow:0 0 20px rgba(0,200,255,.15)}
+}
+
+/* 22. Case data number pop */
+.cd-n.up{animation:numPop .6s var(--ease-spring) both}
+@keyframes numPop{
+  from{transform:scale(.5);opacity:0}
+  to{transform:scale(1);opacity:1}
+}
+
+/* 23. Pricing card top highlight line */
+.card::after{
+  content:'';
+  position:absolute;top:0;left:20%;right:20%;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(0,200,255,.3),transparent);
+  opacity:0;transition:opacity .5s;
+}
+.card:hover::after{opacity:1}
+
+/* 24. Nav brand subtle scale */
+.nav .brand{
+  transition:transform .3s var(--ease-spring);
+}
+.nav .brand:hover{
+  transform:scale(1.03);
+}
+
+/* 25. FAQ item highlight on open */
+.faq-item.open{
+  background:rgba(0,200,255,.02);
+  border-radius:8px;
+  padding-left:8px;padding-right:8px;
+  transition:background .3s;
+}
+
+/* 26. Smooth scrollbar for Firefox */
+html{scrollbar-color:rgba(0,200,255,.15) var(--bg);scrollbar-width:thin}
+
+/* 27. Image load fade-in */
+img{animation:imgReveal .6s var(--ease-smooth) both}
+@keyframes imgReveal{
+  from{opacity:0;filter:blur(4px)}
+  to{opacity:1;filter:blur(0)}
+}
+
+/* 28. Gradient text for key numbers */
+.hero h1 .grad{
+  background:linear-gradient(135deg,#0cf,#60d5ff,#0cf) !important;
+  background-size:200% 200% !important;
+  -webkit-background-clip:text !important;
+  -webkit-text-fill-color:transparent !important;
+  animation:gradShift 4s ease-in-out infinite;
+}
+@keyframes gradShift{
+  0%,100%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+}
