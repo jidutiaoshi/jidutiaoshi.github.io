@@ -29,7 +29,7 @@ if(!gl.getShaderParameter(vs,gl.COMPILE_STATUS))return;
 // Fragment shader — organic color field
 // Uses nested trig functions to create flowing aurora-like patterns
 var fs=gl.createShader(gl.FRAGMENT_SHADER);
-gl.shaderSource(fs,"precision highp float;uniform float t;uniform vec2 r;varying vec2 uv;void main(){vec2 u=(uv*2.-1.)*r/min(r.x,r.y);float d=-t*.8,a=0.;for(float i=0.;i<6.;i++){a+=cos(i-d-a*u.x);d+=sin(u.y*i+a);}d+=t*.5;vec3 col=vec3(cos(u*vec2(d,a))*.5+.5,cos(a+d)*.4+.6);col=cos(col*cos(vec3(d,a,2.5))*.5+.5);col=col*vec3(0.15,0.55,1.0)+vec3(0.02,0.04,0.10);gl_FragColor=vec4(col,0.18);}");
+gl.shaderSource(fs,"precision highp float;uniform float t;uniform vec2 r;varying vec2 uv;void main(){vec2 p=(uv*2.-1.)*r/min(r.x,r.y);float w=-t*.6,q=0.;for(float i=0.;i<5.;i++){q+=sin(i*1.7-w-q*p.y);w+=cos(p.x*i*0.7+q);}w+=t*.3;vec3 c=vec3(sin(p*vec2(w,q))*0.4+0.6,cos(q+w*0.5)*0.5+0.5);c=sin(c+cos(vec3(w,q*1.3,3.0))*0.6)*0.5+0.5;c=c*vec3(0.08,0.45,0.9)+vec3(0.03,0.02,0.08);gl_FragColor=vec4(c,0.16);}");
 gl.compileShader(fs);
 if(!gl.getShaderParameter(fs,gl.COMPILE_STATUS))return;
 
