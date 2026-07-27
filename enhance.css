@@ -273,8 +273,8 @@ html::before{
   100%{opacity:1;transform:translateX(-50%) scale(1.2)}
 }
 
-/* Old starfield canvas - restored */
-#starfield{opacity:0.5 !important}
+/* Enhanced starfield canvas */
+#gl-starfield{opacity:.55 !important}
 
 /* ══════════════════════════════════════ */
 /* 17. STAGGERED CARD ENTRANCE */
