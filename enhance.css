@@ -158,3 +158,120 @@ h1,h2,h3,.hero h1,.nf-digit,.preloader-percent,.footer-brand{
 .marquee-strip{
   background:linear-gradient(90deg,rgba(0,200,255,0.01),rgba(0,200,255,0.03),rgba(0,200,255,0.01)) !important;
 }
+
+/* ══════════════════════════════════════ */
+/* 17. DEEP BACKGROUND LAYERS */
+/* ══════════════════════════════════════ */
+
+/* Aurora - sweeping color washes behind everything */
+body::before{
+  content:'';
+  position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(ellipse 70% 50% at 15% 10%, rgba(0,180,255,0.07) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 60% at 85% 80%, rgba(100,60,255,0.05) 0%, transparent 55%),
+    radial-gradient(ellipse 60% 40% at 50% 50%, rgba(0,200,255,0.04) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 30% at 30% 40%, rgba(0,140,200,0.03) 0%, transparent 50%);
+  animation:auroraShift 20s ease-in-out infinite alternate;
+}
+@keyframes auroraShift{
+  0%{opacity:0.6;transform:translate(0,0) scale(1)}
+  33%{opacity:1;transform:translate(-30px,-15px) scale(1.06)}
+  66%{opacity:0.8;transform:translate(20px,10px) scale(1.03)}
+  100%{opacity:0.9;transform:translate(-10px,-5px) scale(1.05)}
+}
+
+/* Hero aurora - stronger above fold */
+section.hero::before{
+  content:'';
+  position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(0,200,255,0.12) 0%, transparent 50%),
+    radial-gradient(ellipse 40% 40% at 20% 50%, rgba(0,180,255,0.05) 0%, transparent 50%),
+    radial-gradient(ellipse 30% 50% at 80% 30%, rgba(100,60,255,0.04) 0%, transparent 50%);
+  animation:heroAurora 8s ease-in-out infinite alternate;
+}
+@keyframes heroAurora{
+  0%{opacity:0.7;transform:scale(1)}
+  100%{opacity:1;transform:scale(1.08)}
+}
+
+/* Subtle noise/grain overlay */
+body::after{
+  content:'';
+  position:fixed;inset:0;pointer-events:none;z-index:0;
+  opacity:0.25;
+  background-image:
+    radial-gradient(circle at 25% 25%, rgba(255,255,255,0.015) 1px, transparent 1px),
+    radial-gradient(circle at 75% 75%, rgba(255,255,255,0.01) 1px, transparent 1px);
+  background-size:60px 60px,80px 80px;
+  background-position:0 0, 30px 30px;
+  animation:grainDrift 15s linear infinite;
+}
+@keyframes grainDrift{
+  0%{background-position:0 0, 30px 30px}
+  100%{background-position:60px 60px, 90px 90px}
+}
+
+/* Hero orbs - larger, more visible */
+.hero-orb{
+  filter:blur(120px) !important;
+  opacity:0.25 !important;
+}
+.hero-orb-1{
+  width:400px !important;height:400px !important;
+  top:-15% !important;left:-20% !important;
+  animation:orbFloat1 10s ease-in-out infinite alternate !important;
+}
+.hero-orb-2{
+  width:300px !important;height:300px !important;
+  top:40% !important;right:-10% !important;
+  animation:orbFloat2 8s ease-in-out infinite alternate !important;
+}
+.hero-orb-3{
+  width:250px !important;height:250px !important;
+  bottom:-10% !important;left:30% !important;
+  animation:orbFloat3 12s ease-in-out infinite alternate !important;
+}
+@keyframes orbFloat1{
+  0%{transform:translate(0,0) scale(1)}
+  100%{transform:translate(40px,-30px) scale(1.3)}
+}
+@keyframes orbFloat2{
+  0%{transform:translate(0,0) scale(1)}
+  100%{transform:translate(-30px,20px) scale(1.4)}
+}
+@keyframes orbFloat3{
+  0%{transform:translate(0,0) scale(1)}
+  100%{transform:translate(20px,25px) scale(1.35)}
+}
+
+/* Edge lighting - subtle vignette glow */
+html::before{
+  content:'';
+  position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(ellipse 100% 100% at 50% 50%, transparent 60%, rgba(0,200,255,0.04) 100%);
+  animation:edgeGlow 6s ease-in-out infinite alternate;
+}
+@keyframes edgeGlow{
+  0%{opacity:0.5}
+  100%{opacity:1}
+}
+
+/* Page hero top glow */
+.page-hero::before{
+  content:'';
+  position:absolute;top:0;left:50%;transform:translateX(-50%);
+  width:500px;height:400px;
+  background:radial-gradient(ellipse at center, rgba(0,200,255,0.1) 0%, transparent 70%);
+  pointer-events:none;
+  animation:topGlow 5s ease-in-out infinite alternate;
+}
+@keyframes topGlow{
+  0%{opacity:0.5;transform:translateX(-50%) scale(1)}
+  100%{opacity:1;transform:translateX(-50%) scale(1.2)}
+}
+
+/* WebGL canvas - more visible */
+#gl-starfield{opacity:0.7 !important}
