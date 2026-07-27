@@ -487,3 +487,99 @@ hr{
 .cursor-glow.show{
   transition:opacity .4s,left .15s linear,top .15s linear;
 }
+
+/* ══════════════════════════════════════ */
+/* 30. CHAMPIONOS-STYLE ENHANCEMENTS */
+/* ══════════════════════════════════════ */
+
+/* CTA ring pulse - multi-layer ripple */
+.btn-primary{
+  box-shadow:0 0 0 0 rgba(0,200,255,.4) !important;
+  animation:ctaRingPulse 2.5s ease-out infinite;
+}
+@keyframes ctaRingPulse{
+  0%{box-shadow:0 0 0 0 rgba(0,200,255,.4)}
+  70%{box-shadow:0 0 0 16px rgba(0,200,255,0)}
+  100%{box-shadow:0 0 0 0 rgba(0,200,255,0)}
+}
+
+/* Title shimmer - gradient sweep across headings */
+h2 .hl{
+  background:linear-gradient(110deg,#0cf 30%,#fff 50%,#0cf 70%) !important;
+  background-size:300% 100% !important;
+  -webkit-background-clip:text !important;
+  -webkit-text-fill-color:transparent !important;
+  background-clip:text !important;
+  animation:titleShimmer 4s ease-in-out infinite;
+}
+@keyframes titleShimmer{
+  0%,100%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+}
+
+/* Grid dot overlay - subtle dot pattern */
+section::before{
+  content:'';
+  position:absolute;inset:0;pointer-events:none;z-index:0;
+  opacity:.03;
+  background-image:radial-gradient(circle,rgba(0,200,255,.8) 1px,transparent 1px);
+  background-size:32px 32px;
+}
+section.hero::before,section.page-hero::before,.marquee-strip::before{
+  background-image:none !important;
+}
+
+/* Badge tag sweep - light sweep across badges */
+.case-card-badge::after,.hero-badge::after{
+  content:'';
+  position:absolute;top:0;left:-100%;width:50%;height:100%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.08),transparent);
+  transform:skewX(-20deg);
+  animation:tagSweep 4s ease-in-out infinite;
+}
+.case-card-badge,.hero-badge{position:relative;overflow:hidden}
+@keyframes tagSweep{
+  0%,100%{left:-100%}
+  50%{left:150%}
+}
+
+/* Ripple effect on card click */
+.pain:active::after,.case-card:active::after,.platform-card:active::after,
+.feat-card:active::after,.policy-card:active::after,.trust-item:active::after{
+  content:'';
+  position:absolute;inset:0;border-radius:inherit;
+  background:rgba(0,200,255,.08);
+  animation:rippleOut .6s ease-out;
+  pointer-events:none;
+}
+@keyframes rippleOut{
+  from{opacity:1;transform:scale(.95)}
+  to{opacity:0;transform:scale(1.02)}
+}
+
+/* Feature card glow line on top */
+.feat-card{
+  overflow:hidden;
+}
+.feat-card::after{
+  content:'';
+  position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,rgba(0,200,255,.4),transparent);
+  opacity:0;transition:opacity .4s;
+}
+.feat-card:hover::after{opacity:1}
+
+/* Number counter shine */
+.counter{
+  position:relative;
+}
+.counter::after{
+  content:'';
+  position:absolute;inset:0;
+  background:linear-gradient(180deg,transparent 40%,rgba(0,200,255,.1) 50%,transparent 60%);
+  animation:counterShine 2s ease-in-out infinite;
+}
+@keyframes counterShine{
+  0%,100%{opacity:0}
+  50%{opacity:1}
+}
