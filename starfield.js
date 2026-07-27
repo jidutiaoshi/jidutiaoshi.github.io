@@ -10,8 +10,12 @@ if(oldC)oldC.style.display="none";
 
 var c=document.createElement("canvas");
 c.id="gl-starfield";
-c.style.cssText="position:fixed;inset:0;z-index:0;pointer-events:none";
+c.style.cssText="position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none";
 document.body.prepend(c);
+// Set canvas resolution immediately
+var dpr=Math.min(window.devicePixelRatio||1,2);
+c.width=window.innerWidth*dpr;
+c.height=window.innerHeight*dpr;
 
 gl=c.getContext("webgl2",{alpha:true,premultipliedAlpha:true})||c.getContext("webgl",{alpha:true,premultipliedAlpha:true})||c.getContext("experimental-webgl",{alpha:true,premultipliedAlpha:true});
 if(!gl)return;
