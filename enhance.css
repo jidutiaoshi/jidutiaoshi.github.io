@@ -590,15 +590,6 @@ h2 .hl{
   100%{border-color:rgba(0,220,255,.5);box-shadow:0 0 48px rgba(0,200,255,.12),0 0 80px rgba(0,200,255,.05)}
 }
 
-/* Fix marquee - force correct animation */
-.marquee-track{
-  animation:marqueeScroll 30s linear infinite !important;
-}
-@keyframes marqueeScroll{
-  0%{transform:translateX(0)}
-  100%{transform:translateX(-50%)}
-}
-
 /* 34. Mobile menu slide-in */
 .mobile-menu{
   transition:transform .4s var(--ease-out-expo),opacity .4s var(--ease-out-expo) !important;
