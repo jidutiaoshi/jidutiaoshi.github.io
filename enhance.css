@@ -566,3 +566,28 @@ h2 .hl{
   0%,100%{opacity:0}
   50%{opacity:1}
 }
+
+/* 31. Pricing ribbon pulse */
+.card.featured .ribbon{
+  animation:ribbonPulse 2s ease-in-out infinite;
+}
+@keyframes ribbonPulse{
+  0%,100%{box-shadow:0 0 8px rgba(0,200,255,.2)}
+  50%{box-shadow:0 0 20px rgba(0,200,255,.6),0 0 40px rgba(0,200,255,.2)}
+}
+
+/* 32. Hero orbs - softer cyan/purple gradient */
+.hero-orb-1{background:radial-gradient(circle,rgba(0,200,255,.4),transparent) !important}
+.hero-orb-2{background:radial-gradient(circle,rgba(100,60,255,.3),transparent) !important}
+.hero-orb-3{background:radial-gradient(circle,rgba(0,180,220,.35),transparent) !important}
+
+/* 33. Mobile menu slide-in */
+.mobile-menu{
+  transition:transform .4s var(--ease-out-expo),opacity .4s var(--ease-out-expo) !important;
+  transform:translateX(20px);
+  opacity:0;
+}
+.mobile-menu.open{
+  transform:translateX(0) !important;
+  opacity:1 !important;
+}
