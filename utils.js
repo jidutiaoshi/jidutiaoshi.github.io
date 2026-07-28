@@ -1,3 +1,20 @@
+// Marquee animation - JS driven, bypasses broken CSS keyframe
+(function(){
+var track=document.querySelector(".marquee-track");
+if(!track)return;
+track.style.animation="none";
+track.style.width="max-content";
+var speed=0.6,pos=0,last=performance.now();
+function step(now){
+var dt=now-last;last=now;
+pos-=speed*dt/16;
+if(Math.abs(pos)>=track.scrollWidth/2)pos=0;
+track.style.transform="translateX("+pos+"px)";
+requestAnimationFrame(step);
+}
+requestAnimationFrame(step);
+})();
+
 // Utility: click QQ numbers to copy
 (function(){
 var qqNumbers=[
