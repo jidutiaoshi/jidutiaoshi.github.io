@@ -590,13 +590,10 @@ h2 .hl{
   100%{border-color:rgba(0,220,255,.5);box-shadow:0 0 48px rgba(0,200,255,.12),0 0 80px rgba(0,200,255,.05)}
 }
 
-/* Fix marquee - fresh keyframe in external CSS */
-@keyframes marqueeFix{
-  0%{transform:translateX(0)}
-  100%{transform:translateX(-50%)}
-}
+/* Fix marquee - ensure track overflows container */
 .marquee-track{
-  animation-name:marqueeFix !important;
+  width:max-content !important;
+  animation:marqueeScroll 30s linear infinite !important;
 }
 
 /* 34. Mobile menu slide-in */
