@@ -581,7 +581,16 @@ h2 .hl{
 .hero-orb-2{background:radial-gradient(circle,rgba(100,60,255,.3),transparent) !important}
 .hero-orb-3{background:radial-gradient(circle,rgba(0,180,220,.35),transparent) !important}
 
-/* 33. Mobile menu slide-in */
+/* 33. ULTRA card glow border */
+.card.featured{
+  animation:ultraGlow 3s ease-in-out infinite alternate;
+}
+@keyframes ultraGlow{
+  0%{border-color:rgba(0,200,255,.2);box-shadow:0 0 24px rgba(0,200,255,.04)}
+  100%{border-color:rgba(0,220,255,.5);box-shadow:0 0 48px rgba(0,200,255,.12),0 0 80px rgba(0,200,255,.05)}
+}
+
+/* 34. Mobile menu slide-in */
 .mobile-menu{
   transition:transform .4s var(--ease-out-expo),opacity .4s var(--ease-out-expo) !important;
   transform:translateX(20px);
