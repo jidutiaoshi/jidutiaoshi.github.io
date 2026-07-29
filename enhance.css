@@ -64,26 +64,35 @@ h1{font-weight:700;letter-spacing:-0.03em;line-height:1.15}
   --ease-out-expo:cubic-bezier(0.16,1,0.3,1);
 }
 
-/* 3. Card hover glow border animation */
-.card,.case-card,.platform-card,.policy-card,.feat-card,.contact-card-new,.pain,.step-box,.trust-item{
+/* 3. Cards — clean, minimal */
+.card,.case-card,.platform-card,.policy-card,.feat-card,.contact-card-new,.pain,.step-box,.trust-item,.prebuy-card,.tool-card{
   position:relative;
-  overflow:hidden;
-  transition:transform 0.4s var(--ease-spring),box-shadow 0.4s var(--ease-smooth),border-color 0.4s var(--ease-smooth) !important;
+  border:1px solid rgba(255,255,255,.06) !important;
+  border-radius:16px;
+  transition:transform .35s var(--ease-smooth),border-color .35s var(--ease-smooth) !important;
 }
-.card::before,.case-card::before,.platform-card::before,.policy-card::before,.feat-card::before{
-  content:'';
-  position:absolute;
-  inset:0;
-  border-radius:inherit;
-  opacity:0;
-  transition:opacity 0.5s var(--ease-smooth);
-  pointer-events:none;
-  z-index:1;
+[data-theme="light"] .card,[data-theme="light"] .case-card,[data-theme="light"] .platform-card,
+[data-theme="light"] .policy-card,[data-theme="light"] .feat-card,[data-theme="light"] .prebuy-card,
+[data-theme="light"] .tool-card,[data-theme="light"] .contact-card-new{
+  border-color:rgba(0,0,0,.06) !important;
 }
-.card:hover::before{opacity:1;box-shadow:inset 0 0 0 1px rgba(255,255,255,0.06)}
-.case-card:hover::before{opacity:1;box-shadow:inset 0 0 0 1px rgba(255,255,255,0.06)}
-.platform-card:hover::before{opacity:1;box-shadow:inset 0 0 0 1px rgba(255,255,255,0.05)}
-.feat-card:hover::before{opacity:1;box-shadow:inset 0 0 0 1px rgba(255,255,255,0.05)}
+.card:hover,.case-card:hover,.platform-card:hover,.policy-card:hover,
+.feat-card:hover,.prebuy-card:hover,.tool-card:hover,.contact-card-new:hover{
+  transform:translateY(-2px);
+  border-color:rgba(255,255,255,.1) !important;
+}
+[data-theme="light"] .card:hover,[data-theme="light"] .case-card:hover{
+  border-color:rgba(0,0,0,.12) !important;
+}
+
+/* Remove all pseudo-element glow overlays */
+.card::before,.card::after,
+.case-card::before,.case-card::after,
+.platform-card::before,.platform-card::after,
+.policy-card::before,.policy-card::after,
+.feat-card::before,.feat-card::after{
+  content:none;
+}
 
 /* 4. Clean button */
 .btn-primary{
@@ -315,8 +324,12 @@ html::before{
   100%{opacity:1;transform:translateX(-50%) scale(1.2)}
 }
 
-/* Enhanced starfield canvas */
-#gl-starfield{opacity:.55 !important}
+/* Starfield: subtle */
+#gl-starfield{opacity:.35 !important}
+
+/* Disable grain overlay & edge glow — keep it clean */
+body::after{display:none}
+html::before{display:none}
 
 /* ══════════════════════════════════════ */
 /* 17. STAGGERED CARD ENTRANCE */
@@ -711,193 +724,74 @@ img[loading="lazy"]{
 }
 
 /* ══════════════════════════════════════ */
-/* 36. GLASS MORPHISM CARDS */
+/* 36. CARDS — SUBTLE DEPTH */
 /* ══════════════════════════════════════ */
-.card,.case-card,.platform-card,.policy-card,.feat-card,
-.pain,.step-box,.trust-item,.prebuy-card,.tool-card,
-.contact-card-new,.faq-item,.story-content{
-  background:rgba(255,255,255,.025) !important;
-  backdrop-filter:blur(16px);
-  -webkit-backdrop-filter:blur(16px);
-  border:1px solid rgba(255,255,255,.05) !important;
-  box-shadow:0 4px 24px rgba(0,0,0,.2),inset 0 1px 0 rgba(255,255,255,.03) !important;
+
+/* Clean background for cards, no glass effect */
+.card,.case-card,.platform-card,.policy-card,.feat-card,.pain,.step-box,.trust-item,.prebuy-card,.tool-card,.contact-card-new,.faq-item,.story-content{
+  background:rgba(255,255,255,.012) !important;
+}
+[data-theme="light"] .card,[data-theme="light"] .case-card,[data-theme="light"] .platform-card,
+[data-theme="light"] .policy-card,[data-theme="light"] .feat-card,[data-theme="light"] .pain,
+[data-theme="light"] .step-box,[data-theme="light"] .trust-item,[data-theme="light"] .prebuy-card,
+[data-theme="light"] .tool-card,[data-theme="light"] .contact-card-new{
+  background:rgba(0,0,0,.015) !important;
 }
 
-/* Light theme glass */
-[data-theme="light"] .card,
-[data-theme="light"] .case-card,
-[data-theme="light"] .platform-card,
-[data-theme="light"] .policy-card,
-[data-theme="light"] .feat-card,
-[data-theme="light"] .pain,
-[data-theme="light"] .step-box,
-[data-theme="light"] .trust-item,
-[data-theme="light"] .prebuy-card,
-[data-theme="light"] .tool-card,
-[data-theme="light"] .contact-card-new,
-[data-theme="light"] .faq-item,
-[data-theme="light"] .story-content{
-  background:rgba(255,255,255,.4) !important;
-  border:1px solid rgba(0,0,0,.06) !important;
-  box-shadow:0 4px 24px rgba(0,0,0,.06),inset 0 1px 0 rgba(255,255,255,.5) !important;
-}
-
-/* Glass hover: intensify */
-.card:hover,.case-card:hover,.platform-card:hover,.policy-card:hover,
-.feat-card:hover,.pain:hover,.step-box:hover,.trust-item:hover,
-.prebuy-card:hover,.tool-card:hover,.contact-card-new:hover{
-  background:rgba(255,255,255,.04) !important;
-  border-color:rgba(0,200,255,.15) !important;
-  box-shadow:0 8px 40px rgba(0,0,0,.3),inset 0 1px 0 rgba(255,255,255,.05),0 0 0 1px rgba(0,200,255,.08) !important;
-}
-[data-theme="light"] .card:hover,
-[data-theme="light"] .case-card:hover,
-[data-theme="light"] .platform-card:hover,
-[data-theme="light"] .policy-card:hover,
-[data-theme="light"] .feat-card:hover,
-[data-theme="light"] .pain:hover,
-[data-theme="light"] .step-box:hover,
-[data-theme="light"] .trust-item:hover,
-[data-theme="light"] .prebuy-card:hover,
-[data-theme="light"] .tool-card:hover,
-[data-theme="light"] .contact-card-new:hover{
-  background:rgba(255,255,255,.65) !important;
-  border-color:rgba(0,200,255,.25) !important;
-  box-shadow:0 8px 40px rgba(0,0,0,.1),inset 0 1px 0 rgba(255,255,255,.6) !important;
-}
-
-/* Glass effect for pricing featured card */
+/* Featured card: clean with subtle accent border */
 .card.featured{
-  background:rgba(0,200,255,.04) !important;
-  border-color:rgba(0,200,255,.2) !important;
-  box-shadow:0 4px 32px rgba(0,200,255,.08),inset 0 1px 0 rgba(0,200,255,.05) !important;
+  border-color:rgba(255,255,255,.12) !important;
 }
 [data-theme="light"] .card.featured{
-  background:rgba(0,200,255,.06) !important;
-  border-color:rgba(0,200,255,.3) !important;
+  border-color:rgba(0,0,0,.12) !important;
 }
 
-/* Enhanced nav glass */
+/* Nav: clean, minimal */
 #nav{
-  backdrop-filter:blur(20px) saturate(1.5);
-  -webkit-backdrop-filter:blur(20px) saturate(1.5);
-  background:rgba(6,8,15,.82) !important;
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  background:rgba(3,6,9,.85) !important;
   border-bottom:1px solid rgba(255,255,255,.04);
 }
 [data-theme="light"] #nav{
-  background:rgba(255,255,255,.82) !important;
+  background:rgba(255,255,255,.85) !important;
   border-bottom:1px solid rgba(0,0,0,.06);
 }
 
-/* Hero accent line - subtle */
+/* Hero subtle accent line */
 .hero h1::before{
   content:'';
-  display:block;width:40px;height:2px;
-  background:rgba(255,255,255,.2);
-  margin-bottom:20px;border-radius:1px;
+  display:block;width:32px;height:1px;
+  background:rgba(255,255,255,.12);
+  margin-bottom:24px;
 }
 
-[data-theme="light"] .hero h1::before{
-  background:rgba(0,0,0,.12);
-}
-
-/* ══════════════════════════════════════ */
-/* 38. ROTATING GRADIENT BORDER (conic) */
-/* ══════════════════════════════════════ */
-
-/* Featured card: conic-gradient rotating border */
-.card.featured{
-  position:relative;
-  z-index:1;
-  background:var(--bg) !important;
-  border-radius:20px;
-}
-.card.featured::before{
-  content:'';
-  position:absolute;
-  inset:-2px;
-  border-radius:22px;
-  z-index:-1;
-  background:conic-gradient(
-    from 0deg,
-    transparent 30deg,
-    rgba(0,200,255,.5) 60deg,
-    rgba(100,60,255,.6) 120deg,
-    rgba(0,200,255,.5) 180deg,
-    transparent 210deg,
-    transparent 360deg
-  );
-  animation:conicSpin 12s linear infinite;
-  opacity:.5;
-}
-.card.featured::after{
-  content:'';
-  position:absolute;
-  inset:1px;
-  border-radius:19px;
-  z-index:-1;
-  background:var(--bg);
-}
-@keyframes conicSpin{
-  from{transform:rotate(0deg)}
-  to{transform:rotate(360deg)}
-}
-
-/* Pricing cards: subtle gradient border on hover */
-.card:not(.featured):hover::before{
-  opacity:1;
-  box-shadow:
-    inset 0 0 0 1px rgba(0,200,255,.35),
-    0 0 30px rgba(0,200,255,.08),
-    0 0 60px rgba(0,200,255,.03) !important;
-}
-
-/* ══════════════════════════════════════ */
-/* 39. HERO TECH ACCENTS */
-/* ══════════════════════════════════════ */
-
-/* Hero badge: clean */
-.hero-badge{
-  font-weight:500;
-  letter-spacing:.5px;
-}
-
-/* Section divider: subtle */
+/* Section divider: barely visible */
 .divider{
   height:1px !important;
-  background:rgba(255,255,255,.06) !important;
-}
-[data-theme="light"] .divider{
-  background:rgba(0,0,0,.08) !important;
-}
-
-/* Mobile: disable conic border (performance) */
-@media(max-width:640px){
-  .card.featured::before{
-    animation:none;
-    opacity:.4;
-  }
+  background:rgba(255,255,255,.04) !important;
+  margin:24px 0;
 }
 
 /* ══════════════════════════════════════ */
-/* 40. REFINED ATMOSPHERE */
+/* ATMOSPHERE — minimal */
 /* ══════════════════════════════════════ */
 
-/* Subtle body aurora - calm, professional */
+/* Body aurora: barely perceptible */
 body::before{
   background:
-    radial-gradient(ellipse 50% 35% at 15% 10%, rgba(0,180,255,.05) 0%, transparent 50%),
-    radial-gradient(ellipse 40% 40% at 80% 80%, rgba(0,140,220,.03) 0%, transparent 45%) !important;
-  animation:auroraSoft 30s ease-in-out infinite alternate !important;
+    radial-gradient(ellipse 50% 30% at 15% 10%, rgba(0,160,240,.04) 0%, transparent 50%),
+    radial-gradient(ellipse 35% 35% at 80% 80%, rgba(0,140,220,.02) 0%, transparent 45%) !important;
+  animation:auroraSoft 40s ease-in-out infinite alternate !important;
 }
 @keyframes auroraSoft{
-  0%{opacity:.55;transform:translate(0,0)}
-  50%{opacity:.8;transform:translate(-15px,-8px)}
-  100%{opacity:.6;transform:translate(8px,5px)}
+  0%{opacity:.4;transform:translate(0,0)}
+  50%{opacity:.6;transform:translate(-10px,-5px)}
+  100%{opacity:.45;transform:translate(5px,3px)}
 }
 
-[data-theme="light"] body::before{opacity:.45 !important}
+[data-theme="light"] body::before{opacity:.35 !important}
 
 @media(max-width:640px){
-  body::before{animation-duration:40s !important;opacity:.4 !important}
+  body::before{animation-duration:50s !important;opacity:.3 !important}
 }
