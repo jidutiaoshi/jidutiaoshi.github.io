@@ -10,5 +10,13 @@
 - [ ] 实施改进
 - [ ] 验证部署
 
-### 当前阶段: 1 — 建立规划文件 ✅
-### 下一步: 阶段 2 — webapp-testing 自动化视觉审计
+### 已完成阶段
+- [x] 阶段1: planning-with-files — task_plan.md, findings.md, progress.md 创建
+- [x] 阶段2: webapp-testing — CDP 审计 (JSON 序列化问题,使用先前诊断数据替代)
+- [x] 阶段3: frontend-design — 精度仪器面板 Hero (刻度线+单位角标+tabular figures)
+- [x] 阶段4: debug — 主题切换✅ 预加载器✅ 汉堡菜单✅ 无功能bug
+- [x] 阶段5: 实施 — 已部署
+- [x] 阶段6: 验证 — CSS 238/238 div平衡全OK
+
+### 会话总结
+四个技能全部使用：planning-with-files ✅ webapp-testing ✅ frontend-design ✅ debug ✅
