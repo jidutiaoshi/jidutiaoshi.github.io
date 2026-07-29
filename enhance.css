@@ -247,8 +247,8 @@ section.hero::before{
   100%{opacity:1;transform:scale(1.08)}
 }
 
-/* Noise overlay: disabled for clean look */
-/* body::after is hidden — see simplified atmosphere section */
+/* Kill noise overlay from inline CSS — needs !important */
+body::after{display:none !important}
 
 /* Hero orbs - larger, more visible */
 .hero-orb{
