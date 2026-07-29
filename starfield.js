@@ -8,11 +8,16 @@ var c=document.createElement("canvas");
 c.id="gl-starfield";
 c.style.cssText="position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:0;transition:opacity 2s ease-in";
 document.body.prepend(c);
-setTimeout(function(){c.style.opacity=".45"},400);
+
+function isLight(){
+  return document.documentElement.hasAttribute("data-theme")&&
+    document.documentElement.getAttribute("data-theme")==="light";
+}
+setTimeout(function(){c.style.opacity=isLight()?".6":".4"},400);
 
 var ctx=c.getContext("2d");
 var W,H,N=250;
-var p=[]; // particles: {x,y,z,vx,vy,vz,size,hue}
+var p=[];
 var camAngleY=0,camAngleX=.15,targetAngleY=0,targetAngleX=.15;
 var fov;
 
@@ -60,10 +65,7 @@ ctx.clearRect(0,0,W,H);
 camAngleY+=(targetAngleY-camAngleY)*.015;
 camAngleX+=(targetAngleX-camAngleX)*.015;
 
-// Is light theme?
-var isLight=document.documentElement.hasAttribute("data-theme")&&
-  document.documentElement.getAttribute("data-theme")==="light";
-var glow=isLight?.4:.5;
+var glow=isLight()?.55:.5;
 
 // Update particles
 for(var i=0;i<N;i++){
