@@ -839,3 +839,109 @@ h2 .hl::after{
     opacity:.18 !important;
   }
 }
+
+/* ══════════════════════════════════════ */
+/* 38. ROTATING GRADIENT BORDER (conic) */
+/* ══════════════════════════════════════ */
+
+/* Featured card: conic-gradient rotating border */
+.card.featured{
+  position:relative;
+  z-index:1;
+  background:var(--bg) !important;
+  border-radius:20px;
+}
+.card.featured::before{
+  content:'';
+  position:absolute;
+  inset:-2px;
+  border-radius:22px;
+  z-index:-1;
+  background:conic-gradient(
+    from 0deg,
+    transparent 30deg,
+    rgba(0,200,255,.5) 60deg,
+    rgba(100,60,255,.6) 120deg,
+    rgba(0,200,255,.5) 180deg,
+    transparent 210deg,
+    transparent 360deg
+  );
+  animation:conicSpin 4s linear infinite;
+  opacity:.8;
+}
+.card.featured::after{
+  content:'';
+  position:absolute;
+  inset:1px;
+  border-radius:19px;
+  z-index:-1;
+  background:var(--bg);
+}
+@keyframes conicSpin{
+  from{transform:rotate(0deg)}
+  to{transform:rotate(360deg)}
+}
+
+/* Pricing cards: subtle gradient border on hover */
+.card:not(.featured):hover::before{
+  opacity:1;
+  box-shadow:
+    inset 0 0 0 1px rgba(0,200,255,.35),
+    0 0 30px rgba(0,200,255,.08),
+    0 0 60px rgba(0,200,255,.03) !important;
+}
+
+/* Case cards: tech border accent on hover */
+.case-card::after{
+  content:'';
+  position:absolute;
+  bottom:0;left:10%;right:10%;height:2px;
+  background:linear-gradient(90deg,transparent,var(--cyan),transparent);
+  opacity:0;
+  transition:opacity .5s,left .4s,right .4s;
+}
+.case-card:hover::after{
+  opacity:.6;
+  left:5%;right:5%;
+}
+
+/* ══════════════════════════════════════ */
+/* 39. HERO TECH ACCENTS */
+/* ══════════════════════════════════════ */
+
+/* Hero badge: scanline shimmer */
+.hero-badge{
+  position:relative;
+  overflow:hidden;
+}
+.hero-badge::after{
+  content:'';
+  position:absolute;top:0;left:-100%;
+  width:60%;height:100%;
+  background:linear-gradient(90deg,transparent,rgba(0,200,255,.12),transparent);
+  transform:skewX(-20deg);
+  animation:badgeSweep 5s ease-in-out infinite;
+}
+@keyframes badgeSweep{
+  0%,100%{left:-100%}
+  50%{left:150%}
+}
+
+/* Section divider: cyan glow pulse */
+.divider{
+  height:2px !important;
+  background:linear-gradient(90deg,transparent,var(--cyan),transparent) !important;
+  animation:dividerPulse 4s ease-in-out infinite;
+}
+@keyframes dividerPulse{
+  0%,100%{opacity:.4}
+  50%{opacity:1}
+}
+
+/* Mobile: disable conic border (performance) */
+@media(max-width:640px){
+  .card.featured::before{
+    animation:none;
+    opacity:.4;
+  }
+}
