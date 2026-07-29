@@ -125,6 +125,43 @@ h1,h2,h3,.hero h1,.nf-digit,.preloader-percent,.footer-brand{
   cursor:default;
 }
 
+/* 9b. Hero stat ring glow */
+.hero-stats .s{
+  position:relative;
+}
+.hero-stats .s::before{
+  content:'';
+  position:absolute;
+  inset:-12px;
+  border-radius:50%;
+  border:2px solid transparent;
+  background:conic-gradient(from -90deg,var(--cyan),rgba(100,60,255,.4),var(--cyan),transparent,transparent) border-box;
+  -webkit-mask:linear-gradient(#fff 0 0) padding-box,linear-gradient(#fff 0 0);
+  mask:linear-gradient(#fff 0 0) padding-box,linear-gradient(#fff 0 0);
+  -webkit-mask-composite:xor;
+  mask-composite:exclude;
+  opacity:.25;
+  animation:statRingSpin 6s linear infinite;
+}
+.hero-stats .s:nth-child(2)::before{
+  animation-duration:8s;
+  animation-direction:reverse;
+  opacity:.2;
+}
+.hero-stats .s:nth-child(3)::before{
+  animation-duration:7s;
+  opacity:.3;
+}
+@keyframes statRingSpin{
+  to{transform:rotate(360deg)}
+}
+
+/* Stat ring hover intensifies */
+.hero-stats .s:hover::before{
+  opacity:.55;
+  transition:opacity .4s;
+}
+
 /* 10. Testimonial quote mark */
 .testimonial .q::before{
   content:'"';
