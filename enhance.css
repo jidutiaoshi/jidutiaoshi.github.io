@@ -757,12 +757,42 @@ img[loading="lazy"]{
   border-color:rgba(0,0,0,.12) !important;
 }
 
-/* Nav: clean, minimal */
+/* Nav: match warm dark */
 #nav{
   backdrop-filter:blur(12px);
   -webkit-backdrop-filter:blur(12px);
-  background:rgba(3,6,9,.85) !important;
-  border-bottom:1px solid rgba(255,255,255,.04);
+  background:rgba(12,6,6,.92) !important;
+  border-bottom:1px solid rgba(230,57,70,.08);
+}
+
+/* Hero: left-aligned like championos */
+.hero{
+  align-items:flex-start !important;
+  text-align:left !important;
+}
+.hero h1,.hero .hero-sub,.hero .section-sub,.hero .hero-badge{
+  text-align:left !important;
+  margin-left:0 !important;
+  margin-right:auto !important;
+}
+.hero h1{
+  font-size:clamp(3rem,8vw,7.5rem) !important;
+  margin-bottom:32px !important;
+}
+.hero .section-sub{
+  max-width:520px !important;
+}
+@media(max-width:768px){
+  .hero{
+    align-items:center !important;
+    text-align:center !important;
+  }
+  .hero h1,.hero .hero-sub,.hero .section-sub{
+    text-align:center !important;
+    margin-left:auto !important;
+    margin-right:auto !important;
+  }
+  .hero h1{font-size:clamp(2rem,6vw,3rem) !important}
 }
 [data-theme="light"] #nav{
   background:rgba(255,255,255,.85) !important;
