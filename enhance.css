@@ -792,15 +792,15 @@ img[loading="lazy"]{
   .hero h1{font-size:clamp(2rem,6vw,3rem) !important}
 }
 
-/* Section breathing room — championos-style */
+/* Section breathing room */
 @media(min-width:769px){
   .section-inner{
-    padding-left:68px !important;
-    padding-right:68px !important;
+    padding-left:64px !important;
+    padding-right:64px !important;
   }
   section:not(.hero):not(.marquee-strip) .section-inner{
-    padding-top:100px !important;
-    padding-bottom:100px !important;
+    padding-top:96px !important;
+    padding-bottom:96px !important;
   }
 }
 @media(max-width:768px){
@@ -808,6 +808,11 @@ img[loading="lazy"]{
     padding-left:24px !important;
     padding-right:24px !important;
   }
+}
+
+/* Cards: refined radius */
+.card,.case-card,.platform-card,.policy-card,.feat-card,.prebuy-card,.tool-card{
+  border-radius:20px !important;
 }
 [data-theme="light"] #nav{
   background:rgba(255,255,255,.85) !important;
