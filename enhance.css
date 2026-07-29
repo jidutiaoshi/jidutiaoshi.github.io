@@ -148,26 +148,58 @@ h1{font-weight:700;letter-spacing:-0.03em;line-height:1.15}
   cursor:default;
 }
 
-/* 9b. Hero stat — instrument readout style */
+/* 9b. Hero stat — precision instrument panel */
+.hero-stats{
+  position:relative;
+  display:flex;
+  gap:48px;
+  padding-top:20px;
+}
+/* Measurement scale line connecting all stats */
+.hero-stats::before{
+  content:'';
+  position:absolute;
+  top:0;left:0;right:0;
+  height:1px;
+  background:linear-gradient(90deg,transparent 0%,rgba(0,200,255,.2) 10%,rgba(0,200,255,.2) 90%,transparent 100%);
+  pointer-events:none;
+}
+/* Tick marks at each stat position */
+.hero-stats::after{
+  content:'';
+  position:absolute;
+  top:-2px;left:0;right:0;
+  height:5px;
+  background:
+    linear-gradient(90deg,transparent 9%,var(--cyan) 10%,transparent 11%),
+    linear-gradient(90deg,transparent 29%,var(--cyan) 30%,transparent 31%),
+    linear-gradient(90deg,transparent 49%,var(--cyan) 50%,transparent 51%),
+    linear-gradient(90deg,transparent 69%,var(--cyan) 70%,transparent 71%),
+    linear-gradient(90deg,transparent 89%,var(--cyan) 90%,transparent 91%);
+  opacity:.3;
+  pointer-events:none;
+}
 .hero-stats .s .n{
   font-weight:600;
   font-variant-numeric:tabular-nums;
-  font-family:'Inter','SF Mono','Noto Sans SC',sans-serif !important;
+  font-family:'Space Grotesk','Inter','Noto Sans SC',sans-serif !important;
   position:relative;
 }
 .hero-stats .s .l{
-  font-size:.7rem;
+  font-size:.65rem;
   text-transform:uppercase;
-  letter-spacing:2px;
+  letter-spacing:2.5px;
   color:var(--text4);
+  margin-top:4px;
 }
-/* Small unit marker — like 'ms' or 'fps' on an instrument */
+/* Unit markers */
 .hero-stats .s .n::after{
-  font-size:.45em;
+  font-size:.4em;
   font-weight:400;
-  opacity:.5;
+  opacity:.4;
   vertical-align:super;
-  margin-left:2px;
+  margin-left:1px;
+  font-family:'Inter','Noto Sans SC',sans-serif;
 }
 .hero-stats .s:nth-child(1) .n::after{content:'项'}
 .hero-stats .s:nth-child(2) .n::after{content:'天'}
