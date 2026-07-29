@@ -247,8 +247,34 @@ section.hero::before{
   100%{opacity:1;transform:scale(1.08)}
 }
 
-/* Kill noise overlay from inline CSS — needs !important */
-body::after{display:none !important}
+/* Dynamic floating blobs background */
+body::after{
+  display:block !important;
+  content:'' !important;
+  position:fixed;inset:0;pointer-events:none;z-index:0;
+  mask-image:none !important;
+  -webkit-mask-image:none !important;
+  opacity:.75 !important;
+  background:
+    radial-gradient(ellipse 600px 500px at 15% 10%, rgba(0,180,255,.12) 0%, transparent 55%),
+    radial-gradient(ellipse 500px 450px at 85% 55%, rgba(100,60,255,.08) 0%, transparent 50%),
+    radial-gradient(ellipse 450px 400px at 25% 85%, rgba(0,200,200,.07) 0%, transparent 50%),
+    radial-gradient(ellipse 400px 350px at 60% 20%, rgba(255,140,80,.05) 0%, transparent 50%) !important;
+  background-size:auto !important;
+  animation:blobDrift 20s ease-in-out infinite alternate;
+}
+@keyframes blobDrift{
+  0%{transform:translate(0,0) scale(1)}
+  33%{transform:translate(-25px,15px) scale(1.06)}
+  66%{transform:translate(20px,-10px) scale(.96)}
+  100%{transform:translate(-10px,-20px) scale(1.04)}
+}
+
+/* Dark theme: more subtle blobs */
+[data-theme]:not([data-theme="light"]) body::after{opacity:.2}
+
+/* Mobile: reduce intensity */
+@media(max-width:640px){body::after{opacity:.45 !important}}
 
 /* Hero orbs - larger, more visible */
 .hero-orb{
