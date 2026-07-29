@@ -769,6 +769,8 @@ img[loading="lazy"]{
 .hero{
   align-items:flex-start !important;
   text-align:left !important;
+  padding-top:120px !important;
+  padding-bottom:80px !important;
 }
 .hero h1,.hero .hero-sub,.hero .section-sub,.hero .hero-badge{
   text-align:left !important;
@@ -793,6 +795,24 @@ img[loading="lazy"]{
     margin-right:auto !important;
   }
   .hero h1{font-size:clamp(2rem,6vw,3rem) !important}
+}
+
+/* Section breathing room — championos-style */
+@media(min-width:769px){
+  .section-inner{
+    padding-left:68px !important;
+    padding-right:68px !important;
+  }
+  section:not(.hero):not(.marquee-strip) .section-inner{
+    padding-top:100px !important;
+    padding-bottom:100px !important;
+  }
+}
+@media(max-width:768px){
+  .section-inner{
+    padding-left:24px !important;
+    padding-right:24px !important;
+  }
 }
 [data-theme="light"] #nav{
   background:rgba(255,255,255,.85) !important;
