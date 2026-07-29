@@ -247,22 +247,8 @@ section.hero::before{
   100%{opacity:1;transform:scale(1.08)}
 }
 
-/* Subtle noise/grain overlay */
-body::after{
-  content:'';
-  position:fixed;inset:0;pointer-events:none;z-index:0;
-  opacity:0.25;
-  background-image:
-    radial-gradient(circle at 25% 25%, rgba(255,255,255,0.015) 1px, transparent 1px),
-    radial-gradient(circle at 75% 75%, rgba(255,255,255,0.01) 1px, transparent 1px);
-  background-size:60px 60px,80px 80px;
-  background-position:0 0, 30px 30px;
-  animation:grainDrift 15s linear infinite;
-}
-@keyframes grainDrift{
-  0%{background-position:0 0, 30px 30px}
-  100%{background-position:60px 60px, 90px 90px}
-}
+/* Noise overlay: disabled for clean look */
+/* body::after is hidden — see simplified atmosphere section */
 
 /* Hero orbs - larger, more visible */
 .hero-orb{
@@ -327,9 +313,8 @@ html::before{
 /* Starfield: subtle */
 #gl-starfield{opacity:.35 !important}
 
-/* Disable grain overlay & edge glow — keep it clean */
-body::after{display:none}
-html::before{display:none}
+/* Disable edge glow */
+html::before{display:none !important}
 
 /* ══════════════════════════════════════ */
 /* 17. STAGGERED CARD ENTRANCE */
@@ -720,7 +705,7 @@ img[loading="lazy"]{
 /* Mobile: reduce particle count visual load */
 @media(max-width:640px){
   #gl-starfield{opacity:.35 !important}
-  body::before,body::after,html::before{opacity:.5 !important}
+  body::before,html::before{opacity:.5 !important}
 }
 
 /* ══════════════════════════════════════ */
