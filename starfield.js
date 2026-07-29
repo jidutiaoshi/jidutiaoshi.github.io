@@ -39,7 +39,7 @@ vx:(Math.random()-.5)*.15,
 vy:(Math.random()-.5)*.1,
 vz:.2+Math.random()*.5,
 size:.4+Math.random()*1.8,
-hue:190+Math.random()*30
+hue:5+Math.random()*15
 });
 }
 }

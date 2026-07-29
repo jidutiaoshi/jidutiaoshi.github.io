@@ -256,10 +256,10 @@ body::after{
   -webkit-mask-image:none !important;
   opacity:.75 !important;
   background:
-    radial-gradient(ellipse 600px 500px at 15% 10%, rgba(0,180,255,.12) 0%, transparent 55%),
-    radial-gradient(ellipse 500px 450px at 85% 55%, rgba(100,60,255,.08) 0%, transparent 50%),
-    radial-gradient(ellipse 450px 400px at 25% 85%, rgba(0,200,200,.07) 0%, transparent 50%),
-    radial-gradient(ellipse 400px 350px at 60% 20%, rgba(255,140,80,.05) 0%, transparent 50%) !important;
+    radial-gradient(ellipse 600px 500px at 15% 10%, rgba(230,57,70,.08) 0%, transparent 55%),
+    radial-gradient(ellipse 500px 450px at 85% 55%, rgba(230,57,70,.05) 0%, transparent 50%),
+    radial-gradient(ellipse 450px 400px at 25% 85%, rgba(200,40,50,.04) 0%, transparent 50%),
+    radial-gradient(ellipse 400px 350px at 60% 20%, rgba(230,57,70,.03) 0%, transparent 50%) !important;
   background-size:auto !important;
   animation:blobDrift 20s ease-in-out infinite alternate;
 }
@@ -791,8 +791,8 @@ img[loading="lazy"]{
 /* Body aurora: barely perceptible */
 body::before{
   background:
-    radial-gradient(ellipse 50% 30% at 15% 10%, rgba(0,160,240,.04) 0%, transparent 50%),
-    radial-gradient(ellipse 35% 35% at 80% 80%, rgba(0,140,220,.02) 0%, transparent 45%) !important;
+    radial-gradient(ellipse 50% 30% at 15% 10%, rgba(230,57,70,.05) 0%, transparent 50%),
+    radial-gradient(ellipse 35% 35% at 80% 80%, rgba(200,40,50,.03) 0%, transparent 45%) !important;
   animation:auroraSoft 40s ease-in-out infinite alternate !important;
 }
 @keyframes auroraSoft{
