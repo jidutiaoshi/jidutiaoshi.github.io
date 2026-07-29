@@ -689,3 +689,153 @@ img[loading="lazy"]{
   #gl-starfield{opacity:.35 !important}
   body::before,body::after,html::before{opacity:.5 !important}
 }
+
+/* ══════════════════════════════════════ */
+/* 36. GLASS MORPHISM CARDS */
+/* ══════════════════════════════════════ */
+.card,.case-card,.platform-card,.policy-card,.feat-card,
+.pain,.step-box,.trust-item,.prebuy-card,.tool-card,
+.contact-card-new,.faq-item,.story-content{
+  background:rgba(255,255,255,.025) !important;
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  border:1px solid rgba(255,255,255,.05) !important;
+  box-shadow:0 4px 24px rgba(0,0,0,.2),inset 0 1px 0 rgba(255,255,255,.03) !important;
+}
+
+/* Light theme glass */
+[data-theme="light"] .card,
+[data-theme="light"] .case-card,
+[data-theme="light"] .platform-card,
+[data-theme="light"] .policy-card,
+[data-theme="light"] .feat-card,
+[data-theme="light"] .pain,
+[data-theme="light"] .step-box,
+[data-theme="light"] .trust-item,
+[data-theme="light"] .prebuy-card,
+[data-theme="light"] .tool-card,
+[data-theme="light"] .contact-card-new,
+[data-theme="light"] .faq-item,
+[data-theme="light"] .story-content{
+  background:rgba(255,255,255,.4) !important;
+  border:1px solid rgba(0,0,0,.06) !important;
+  box-shadow:0 4px 24px rgba(0,0,0,.06),inset 0 1px 0 rgba(255,255,255,.5) !important;
+}
+
+/* Glass hover: intensify */
+.card:hover,.case-card:hover,.platform-card:hover,.policy-card:hover,
+.feat-card:hover,.pain:hover,.step-box:hover,.trust-item:hover,
+.prebuy-card:hover,.tool-card:hover,.contact-card-new:hover{
+  background:rgba(255,255,255,.04) !important;
+  border-color:rgba(0,200,255,.15) !important;
+  box-shadow:0 8px 40px rgba(0,0,0,.3),inset 0 1px 0 rgba(255,255,255,.05),0 0 0 1px rgba(0,200,255,.08) !important;
+}
+[data-theme="light"] .card:hover,
+[data-theme="light"] .case-card:hover,
+[data-theme="light"] .platform-card:hover,
+[data-theme="light"] .policy-card:hover,
+[data-theme="light"] .feat-card:hover,
+[data-theme="light"] .pain:hover,
+[data-theme="light"] .step-box:hover,
+[data-theme="light"] .trust-item:hover,
+[data-theme="light"] .prebuy-card:hover,
+[data-theme="light"] .tool-card:hover,
+[data-theme="light"] .contact-card-new:hover{
+  background:rgba(255,255,255,.65) !important;
+  border-color:rgba(0,200,255,.25) !important;
+  box-shadow:0 8px 40px rgba(0,0,0,.1),inset 0 1px 0 rgba(255,255,255,.6) !important;
+}
+
+/* Glass effect for pricing featured card */
+.card.featured{
+  background:rgba(0,200,255,.04) !important;
+  border-color:rgba(0,200,255,.2) !important;
+  box-shadow:0 4px 32px rgba(0,200,255,.08),inset 0 1px 0 rgba(0,200,255,.05) !important;
+}
+[data-theme="light"] .card.featured{
+  background:rgba(0,200,255,.06) !important;
+  border-color:rgba(0,200,255,.3) !important;
+}
+
+/* Enhanced nav glass */
+#nav{
+  backdrop-filter:blur(20px) saturate(1.5);
+  -webkit-backdrop-filter:blur(20px) saturate(1.5);
+  background:rgba(6,8,15,.82) !important;
+  border-bottom:1px solid rgba(255,255,255,.04);
+}
+[data-theme="light"] #nav{
+  background:rgba(255,255,255,.82) !important;
+  border-bottom:1px solid rgba(0,0,0,.06);
+}
+
+/* ══════════════════════════════════════ */
+/* 37. TECH GRID HERO OVERLAY */
+/* ══════════════════════════════════════ */
+
+/* Hero dot-grid pattern */
+section.hero::after{
+  content:'';
+  position:absolute;inset:0;pointer-events:none;z-index:0;opacity:.25;
+  background-image:
+    /* Major grid lines */
+    linear-gradient(rgba(0,200,255,.04) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(0,200,255,.04) 1px,transparent 1px),
+    /* Minor dot grid */
+    radial-gradient(circle,rgba(0,200,255,.08) 1px,transparent 1px);
+  background-size:
+    80px 80px,
+    80px 80px,
+    20px 20px;
+  background-position:0 0,0 0,10px 10px;
+  mask-image:radial-gradient(ellipse 70% 60% at 50% 40%,black 30%,transparent 70%);
+  -webkit-mask-image:radial-gradient(ellipse 70% 60% at 50% 40%,black 30%,transparent 70%);
+  animation:gridPulse 8s ease-in-out infinite alternate;
+}
+@keyframes gridPulse{
+  0%{opacity:.15}
+  100%{opacity:.35}
+}
+
+/* Hex corner accent - tech feel decorative elements */
+.hero h1::before{
+  content:'';
+  display:block;width:40px;height:3px;
+  background:linear-gradient(90deg,var(--cyan),transparent);
+  margin-bottom:16px;border-radius:2px;
+  opacity:.6;
+}
+
+/* Hex corner accent for section headings */
+h2 .hl::after{
+  content:'';
+  display:inline-block;width:6px;height:6px;
+  background:var(--cyan);
+  border-radius:1px;
+  margin-left:6px;vertical-align:middle;
+  animation:hexBlink 2s ease-in-out infinite;
+}
+@keyframes hexBlink{
+  0%,100%{opacity:.4;transform:rotate(0)}
+  50%{opacity:1;transform:rotate(45deg)}
+}
+
+/* Dark theme override */
+[data-theme="light"] section.hero::after{
+  opacity:.4;
+  background-image:
+    linear-gradient(rgba(0,150,200,.06) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(0,150,200,.06) 1px,transparent 1px),
+    radial-gradient(circle,rgba(0,150,200,.1) 1px,transparent 1px);
+}
+
+/* Responsive: reduce grid complexity on mobile */
+@media(max-width:640px){
+  section.hero::after{
+    background-image:
+      linear-gradient(rgba(0,200,255,.03) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(0,200,255,.03) 1px,transparent 1px);
+    background-size:60px 60px,60px 60px;
+    opacity:.18 !important;
+  }
+}
