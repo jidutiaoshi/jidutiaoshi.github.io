@@ -705,7 +705,7 @@ img[loading="lazy"]{
 /* Mobile: reduce particle count visual load */
 @media(max-width:640px){
   #gl-starfield{opacity:.35 !important}
-  body::before,html::before{opacity:.5 !important}
+  body::before{opacity:.35 !important}
 }
 
 /* ══════════════════════════════════════ */
