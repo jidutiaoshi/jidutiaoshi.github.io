@@ -227,8 +227,17 @@ h1{font-weight:700;letter-spacing:-0.03em;line-height:1.15}
 }
 
 /* 16. Marquee glow */
+/* Marquee: clean data strip */
 .marquee-strip{
-  background:linear-gradient(90deg,rgba(0,200,255,0.01),rgba(0,200,255,0.03),rgba(0,200,255,0.01)) !important;
+  background:rgba(255,255,255,.008) !important;
+  border-top:1px solid rgba(255,255,255,.03) !important;
+  border-bottom:1px solid rgba(255,255,255,.03) !important;
+}
+.marquee-track span{
+  color:var(--text4) !important;
+  font-weight:400 !important;
+  letter-spacing:1px !important;
+  font-size:11px !important;
 }
 
 /* ══════════════════════════════════════ */
