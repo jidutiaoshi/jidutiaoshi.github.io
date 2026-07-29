@@ -1,5 +1,27 @@
 /* === JiduOS Premium Enhancements === */
 
+/* 0. Global font rendering & base polish */
+html{
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  text-rendering:optimizeLegibility;
+  -webkit-text-size-adjust:100%;
+  text-size-adjust:100%;
+}
+body{
+  font-synthesis:none;
+  font-kerning:normal;
+  font-variant-ligatures:common-ligatures contextual;
+}
+
+/* 0b. Theme transition */
+[data-theme]{
+  transition:background-color .5s var(--ease-smooth),color .5s var(--ease-smooth);
+}
+[data-theme] *, [data-theme] *::before, [data-theme] *::after{
+  transition:background-color .4s var(--ease-smooth),border-color .4s var(--ease-smooth),box-shadow .4s var(--ease-smooth);
+}
+
 /* 1. Display font for headings */
 h1,h2,h3,.hero h1,.nf-digit,.preloader-percent,.footer-brand{
   font-family:'Space Grotesk','Inter','Noto Sans SC',sans-serif !important;
@@ -599,4 +621,71 @@ h2 .hl{
 .mobile-menu.open{
   transform:translateX(0) !important;
   opacity:1 !important;
+}
+
+/* ══════════════════════════════════════ */
+/* 35. PERFORMANCE & INTERACTION POLISH */
+/* ══════════════════════════════════════ */
+
+/* Prevent pull-to-refresh bounce on mobile */
+body{
+  overscroll-behavior-y:none;
+}
+
+/* Smooth scrolling containers */
+.section-inner,.cards,.feat-grid,.prebuy-grid,.tools-grid,.case-grid,.testimonials,.story-content{
+  contain:layout style;
+}
+
+/* GPU layer hints for heavy animations */
+#gl-starfield,.marquee-strip,.hero-orb,.cursor-glow,.preloader{
+  will-change:transform;
+}
+.cs-float{
+  will-change:transform;
+  transform:translateZ(0);
+}
+
+/* Touch-friendly: prevent delays on mobile */
+button,a,summary,[role="button"],.cs-btn,.hamburger,input,select,textarea{
+  touch-action:manipulation;
+}
+
+/* Better image rendering */
+img,video,canvas,svg{
+  image-rendering:auto;
+}
+img[loading="lazy"]{
+  min-height:1px;
+  background:rgba(255,255,255,.01);
+}
+
+/* Skip-link: hidden but accessible */
+.skip-link{
+  position:absolute;top:-100%;left:16px;
+  background:var(--cyan);color:#000;padding:8px 16px;
+  border-radius:0 0 6px 6px;z-index:9999;font-weight:600;
+  text-decoration:none;font-size:14px;
+}
+.skip-link:focus{
+  top:0;
+}
+
+/* Keyboard-only: show outlines only for keyboard nav */
+:focus:not(:focus-visible){
+  outline:none;
+}
+
+/* Enhanced reduced motion */
+@media(prefers-reduced-motion:reduce){
+  #gl-starfield{display:none}
+  .marquee-strip{display:none}
+  .hero-orb{animation:none !important;opacity:.15 !important}
+  .counter::after{animation:none}
+}
+
+/* Mobile: reduce particle count visual load */
+@media(max-width:640px){
+  #gl-starfield{opacity:.35 !important}
+  body::before,body::after,html::before{opacity:.5 !important}
 }
