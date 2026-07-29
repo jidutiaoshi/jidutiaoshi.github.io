@@ -274,6 +274,20 @@ h1{font-weight:700;letter-spacing:-0.03em;line-height:1.15}
   letter-spacing:0;
 }
 
+/* Nav CTA: more prominent */
+.nav-cta{
+  padding:10px 24px !important;
+  font-size:14px !important;
+  font-weight:600 !important;
+  letter-spacing:.3px;
+}
+.nav-cta::after{
+  content:' →';
+  opacity:.6;
+  transition:opacity .3s;
+}
+.nav-cta:hover::after{opacity:1}
+
 /* ══════════════════════════════════════ */
 /* 17. DEEP BACKGROUND LAYERS */
 /* ══════════════════════════════════════ */
