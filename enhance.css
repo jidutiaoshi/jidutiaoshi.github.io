@@ -982,3 +982,57 @@ h2 .hl::after{
     opacity:.4;
   }
 }
+
+/* ══════════════════════════════════════ */
+/* 40. AMBIENT FLOATING ORBS */
+/* ══════════════════════════════════════ */
+
+/* Floating orbs across the page (not just hero) */
+html::after{
+  content:'';
+  position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:
+    /* Top-left cyan orb */
+    radial-gradient(ellipse 600px 400px at 15% 15%, rgba(0,200,255,.04) 0%, transparent 60%),
+    /* Mid-right purple orb */
+    radial-gradient(ellipse 500px 350px at 85% 55%, rgba(100,60,255,.035) 0%, transparent 55%),
+    /* Bottom-left blue orb */
+    radial-gradient(ellipse 450px 300px at 25% 85%, rgba(0,160,240,.03) 0%, transparent 50%),
+    /* Center-top subtle cyan */
+    radial-gradient(ellipse 400px 250px at 60% 20%, rgba(0,200,255,.025) 0%, transparent 50%);
+  animation:ambientFloat 25s ease-in-out infinite alternate;
+  opacity:.7;
+}
+@keyframes ambientFloat{
+  0%{transform:translate(0,0) scale(1);opacity:.6}
+  25%{transform:translate(-30px,20px) scale(1.05);opacity:.8}
+  50%{transform:translate(15px,-15px) scale(.98);opacity:.65}
+  75%{transform:translate(25px,10px) scale(1.03);opacity:.75}
+  100%{transform:translate(-10px,-25px) scale(1.02);opacity:.7}
+}
+
+/* Enhanced body aurora - richer colors */
+body::before{
+  background:
+    radial-gradient(ellipse 60% 40% at 10% 5%, rgba(0,200,255,.08) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 50% at 85% 75%, rgba(100,60,255,.06) 0%, transparent 50%),
+    radial-gradient(ellipse 55% 35% at 50% 50%, rgba(0,180,255,.05) 0%, transparent 55%),
+    radial-gradient(ellipse 35% 25% at 30% 35%, rgba(0,220,255,.04) 0%, transparent 45%) !important;
+  animation:auroraDrift 22s ease-in-out infinite alternate !important;
+}
+@keyframes auroraDrift{
+  0%{opacity:.65;transform:translate(0,0) scale(1)}
+  33%{opacity:1;transform:translate(-40px,-20px) scale(1.08)}
+  66%{opacity:.75;transform:translate(25px,15px) scale(1.04)}
+  100%{opacity:.9;transform:translate(-15px,-10px) scale(1.06)}
+}
+
+/* Light theme adjustments */
+[data-theme="light"] html::after{opacity:.5}
+[data-theme="light"] body::before{opacity:.55 !important}
+
+/* Mobile: reduce ambient effects */
+@media(max-width:640px){
+  html::after{opacity:.35 !important;animation-duration:35s}
+  body::before{animation-duration:30s !important}
+}
