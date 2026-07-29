@@ -22,11 +22,39 @@ body{
   transition:background-color .4s var(--ease-smooth),border-color .4s var(--ease-smooth),box-shadow .4s var(--ease-smooth);
 }
 
-/* 1. Display font for headings */
+/* 1. Typography */
 h1,h2,h3,.hero h1,.nf-digit,.preloader-percent,.footer-brand{
-  font-family:'Space Grotesk','Inter','Noto Sans SC',sans-serif !important;
-  letter-spacing:-0.02em;
+  font-family:'Inter','Noto Sans SC','Microsoft YaHei',sans-serif !important;
+  letter-spacing:-0.01em;
+  font-weight:600;
 }
+h2{
+  font-size:2rem;
+  letter-spacing:-0.02em;
+  margin-bottom:.5em;
+}
+h2 .hl{
+  font-weight:700;
+  color:var(--heading);
+}
+.section-sub{
+  color:var(--text3);
+  font-size:1.05rem;
+  line-height:1.6;
+  max-width:600px;
+}
+.section-label{
+  font-size:.75rem;
+  font-weight:600;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:var(--text4);
+  margin-bottom:8px;
+}
+body{
+  font-family:'Inter','Noto Sans SC','Microsoft YaHei',sans-serif !important;
+}
+h1{font-weight:700;letter-spacing:-0.03em;line-height:1.15}
 
 
 /* 2. Enhanced easing curves */
@@ -52,29 +80,15 @@ h1,h2,h3,.hero h1,.nf-digit,.preloader-percent,.footer-brand{
   pointer-events:none;
   z-index:1;
 }
-.card:hover::before{opacity:1;box-shadow:inset 0 0 0 1px rgba(0,200,255,0.3),inset 0 0 30px rgba(0,200,255,0.05)}
-.case-card:hover::before{opacity:1;box-shadow:inset 0 0 0 1px rgba(0,200,255,0.25),inset 0 0 30px rgba(0,200,255,0.04)}
-.platform-card:hover::before{opacity:1;box-shadow:inset 0 0 0 1px rgba(0,200,255,0.15)}
-.feat-card:hover::before{opacity:1;box-shadow:inset 0 0 0 1px rgba(0,200,255,0.2),inset 0 0 24px rgba(0,200,255,0.04)}
+.card:hover::before{opacity:1;box-shadow:inset 0 0 0 1px rgba(255,255,255,0.06)}
+.case-card:hover::before{opacity:1;box-shadow:inset 0 0 0 1px rgba(255,255,255,0.06)}
+.platform-card:hover::before{opacity:1;box-shadow:inset 0 0 0 1px rgba(255,255,255,0.05)}
+.feat-card:hover::before{opacity:1;box-shadow:inset 0 0 0 1px rgba(255,255,255,0.05)}
 
-/* 4. Enhanced button shimmer */
+/* 4. Clean button */
 .btn-primary{
   position:relative;
   overflow:hidden;
-}
-.btn-primary::after{
-  content:'';
-  position:absolute;
-  top:0;left:-100%;
-  width:60%;
-  height:100%;
-  background:linear-gradient(90deg,transparent,rgba(255,255,255,0.15),transparent);
-  transform:skewX(-25deg);
-  animation:btnSweep 3s ease-in-out infinite;
-}
-@keyframes btnSweep{
-  0%,100%{left:-100%}
-  50%{left:120%}
 }
 
 /* 5. Section label animation */
@@ -125,41 +139,10 @@ h1,h2,h3,.hero h1,.nf-digit,.preloader-percent,.footer-brand{
   cursor:default;
 }
 
-/* 9b. Hero stat ring glow */
-.hero-stats .s{
-  position:relative;
-}
-.hero-stats .s::before{
-  content:'';
-  position:absolute;
-  inset:-12px;
-  border-radius:50%;
-  border:2px solid transparent;
-  background:conic-gradient(from -90deg,var(--cyan),rgba(100,60,255,.4),var(--cyan),transparent,transparent) border-box;
-  -webkit-mask:linear-gradient(#fff 0 0) padding-box,linear-gradient(#fff 0 0);
-  mask:linear-gradient(#fff 0 0) padding-box,linear-gradient(#fff 0 0);
-  -webkit-mask-composite:xor;
-  mask-composite:exclude;
-  opacity:.25;
-  animation:statRingSpin 6s linear infinite;
-}
-.hero-stats .s:nth-child(2)::before{
-  animation-duration:8s;
-  animation-direction:reverse;
-  opacity:.2;
-}
-.hero-stats .s:nth-child(3)::before{
-  animation-duration:7s;
-  opacity:.3;
-}
-@keyframes statRingSpin{
-  to{transform:rotate(360deg)}
-}
-
-/* Stat ring hover intensifies */
-.hero-stats .s:hover::before{
-  opacity:.55;
-  transition:opacity .4s;
+/* 9b. Hero stat subtle emphasis */
+.hero-stats .s .n{
+  font-weight:700;
+  letter-spacing:-.02em;
 }
 
 /* 10. Testimonial quote mark */
@@ -806,75 +789,16 @@ img[loading="lazy"]{
   border-bottom:1px solid rgba(0,0,0,.06);
 }
 
-/* ══════════════════════════════════════ */
-/* 37. TECH GRID HERO OVERLAY */
-/* ══════════════════════════════════════ */
-
-/* Hero dot-grid pattern */
-section.hero::after{
-  content:'';
-  position:absolute;inset:0;pointer-events:none;z-index:0;opacity:.25;
-  background-image:
-    /* Major grid lines */
-    linear-gradient(rgba(0,200,255,.04) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(0,200,255,.04) 1px,transparent 1px),
-    /* Minor dot grid */
-    radial-gradient(circle,rgba(0,200,255,.08) 1px,transparent 1px);
-  background-size:
-    80px 80px,
-    80px 80px,
-    20px 20px;
-  background-position:0 0,0 0,10px 10px;
-  mask-image:radial-gradient(ellipse 70% 60% at 50% 40%,black 30%,transparent 70%);
-  -webkit-mask-image:radial-gradient(ellipse 70% 60% at 50% 40%,black 30%,transparent 70%);
-  animation:gridPulse 8s ease-in-out infinite alternate;
-}
-@keyframes gridPulse{
-  0%{opacity:.15}
-  100%{opacity:.35}
-}
-
-/* Hex corner accent - tech feel decorative elements */
+/* Hero accent line - subtle */
 .hero h1::before{
   content:'';
-  display:block;width:40px;height:3px;
-  background:linear-gradient(90deg,var(--cyan),transparent);
-  margin-bottom:16px;border-radius:2px;
-  opacity:.6;
+  display:block;width:40px;height:2px;
+  background:rgba(255,255,255,.2);
+  margin-bottom:20px;border-radius:1px;
 }
 
-/* Hex corner accent for section headings */
-h2 .hl::after{
-  content:'';
-  display:inline-block;width:6px;height:6px;
-  background:var(--cyan);
-  border-radius:1px;
-  margin-left:6px;vertical-align:middle;
-  animation:hexBlink 2s ease-in-out infinite;
-}
-@keyframes hexBlink{
-  0%,100%{opacity:.4;transform:rotate(0)}
-  50%{opacity:1;transform:rotate(45deg)}
-}
-
-/* Dark theme override */
-[data-theme="light"] section.hero::after{
-  opacity:.4;
-  background-image:
-    linear-gradient(rgba(0,150,200,.06) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(0,150,200,.06) 1px,transparent 1px),
-    radial-gradient(circle,rgba(0,150,200,.1) 1px,transparent 1px);
-}
-
-/* Responsive: reduce grid complexity on mobile */
-@media(max-width:640px){
-  section.hero::after{
-    background-image:
-      linear-gradient(rgba(0,200,255,.03) 1px,transparent 1px),
-      linear-gradient(90deg,rgba(0,200,255,.03) 1px,transparent 1px);
-    background-size:60px 60px,60px 60px;
-    opacity:.18 !important;
-  }
+[data-theme="light"] .hero h1::before{
+  background:rgba(0,0,0,.12);
 }
 
 /* ══════════════════════════════════════ */
@@ -903,8 +827,8 @@ h2 .hl::after{
     transparent 210deg,
     transparent 360deg
   );
-  animation:conicSpin 4s linear infinite;
-  opacity:.8;
+  animation:conicSpin 12s linear infinite;
+  opacity:.5;
 }
 .card.featured::after{
   content:'';
@@ -928,51 +852,23 @@ h2 .hl::after{
     0 0 60px rgba(0,200,255,.03) !important;
 }
 
-/* Case cards: tech border accent on hover */
-.case-card::after{
-  content:'';
-  position:absolute;
-  bottom:0;left:10%;right:10%;height:2px;
-  background:linear-gradient(90deg,transparent,var(--cyan),transparent);
-  opacity:0;
-  transition:opacity .5s,left .4s,right .4s;
-}
-.case-card:hover::after{
-  opacity:.6;
-  left:5%;right:5%;
-}
-
 /* ══════════════════════════════════════ */
 /* 39. HERO TECH ACCENTS */
 /* ══════════════════════════════════════ */
 
-/* Hero badge: scanline shimmer */
+/* Hero badge: clean */
 .hero-badge{
-  position:relative;
-  overflow:hidden;
-}
-.hero-badge::after{
-  content:'';
-  position:absolute;top:0;left:-100%;
-  width:60%;height:100%;
-  background:linear-gradient(90deg,transparent,rgba(0,200,255,.12),transparent);
-  transform:skewX(-20deg);
-  animation:badgeSweep 5s ease-in-out infinite;
-}
-@keyframes badgeSweep{
-  0%,100%{left:-100%}
-  50%{left:150%}
+  font-weight:500;
+  letter-spacing:.5px;
 }
 
-/* Section divider: cyan glow pulse */
+/* Section divider: subtle */
 .divider{
-  height:2px !important;
-  background:linear-gradient(90deg,transparent,var(--cyan),transparent) !important;
-  animation:dividerPulse 4s ease-in-out infinite;
+  height:1px !important;
+  background:rgba(255,255,255,.06) !important;
 }
-@keyframes dividerPulse{
-  0%,100%{opacity:.4}
-  50%{opacity:1}
+[data-theme="light"] .divider{
+  background:rgba(0,0,0,.08) !important;
 }
 
 /* Mobile: disable conic border (performance) */
@@ -984,55 +880,24 @@ h2 .hl::after{
 }
 
 /* ══════════════════════════════════════ */
-/* 40. AMBIENT FLOATING ORBS */
+/* 40. REFINED ATMOSPHERE */
 /* ══════════════════════════════════════ */
 
-/* Floating orbs across the page (not just hero) */
-html::after{
-  content:'';
-  position:fixed;inset:0;pointer-events:none;z-index:0;
-  background:
-    /* Top-left cyan orb */
-    radial-gradient(ellipse 600px 400px at 15% 15%, rgba(0,200,255,.04) 0%, transparent 60%),
-    /* Mid-right purple orb */
-    radial-gradient(ellipse 500px 350px at 85% 55%, rgba(100,60,255,.035) 0%, transparent 55%),
-    /* Bottom-left blue orb */
-    radial-gradient(ellipse 450px 300px at 25% 85%, rgba(0,160,240,.03) 0%, transparent 50%),
-    /* Center-top subtle cyan */
-    radial-gradient(ellipse 400px 250px at 60% 20%, rgba(0,200,255,.025) 0%, transparent 50%);
-  animation:ambientFloat 25s ease-in-out infinite alternate;
-  opacity:.7;
-}
-@keyframes ambientFloat{
-  0%{transform:translate(0,0) scale(1);opacity:.6}
-  25%{transform:translate(-30px,20px) scale(1.05);opacity:.8}
-  50%{transform:translate(15px,-15px) scale(.98);opacity:.65}
-  75%{transform:translate(25px,10px) scale(1.03);opacity:.75}
-  100%{transform:translate(-10px,-25px) scale(1.02);opacity:.7}
-}
-
-/* Enhanced body aurora - richer colors */
+/* Subtle body aurora - calm, professional */
 body::before{
   background:
-    radial-gradient(ellipse 60% 40% at 10% 5%, rgba(0,200,255,.08) 0%, transparent 55%),
-    radial-gradient(ellipse 50% 50% at 85% 75%, rgba(100,60,255,.06) 0%, transparent 50%),
-    radial-gradient(ellipse 55% 35% at 50% 50%, rgba(0,180,255,.05) 0%, transparent 55%),
-    radial-gradient(ellipse 35% 25% at 30% 35%, rgba(0,220,255,.04) 0%, transparent 45%) !important;
-  animation:auroraDrift 22s ease-in-out infinite alternate !important;
+    radial-gradient(ellipse 50% 35% at 15% 10%, rgba(0,180,255,.05) 0%, transparent 50%),
+    radial-gradient(ellipse 40% 40% at 80% 80%, rgba(0,140,220,.03) 0%, transparent 45%) !important;
+  animation:auroraSoft 30s ease-in-out infinite alternate !important;
 }
-@keyframes auroraDrift{
-  0%{opacity:.65;transform:translate(0,0) scale(1)}
-  33%{opacity:1;transform:translate(-40px,-20px) scale(1.08)}
-  66%{opacity:.75;transform:translate(25px,15px) scale(1.04)}
-  100%{opacity:.9;transform:translate(-15px,-10px) scale(1.06)}
+@keyframes auroraSoft{
+  0%{opacity:.55;transform:translate(0,0)}
+  50%{opacity:.8;transform:translate(-15px,-8px)}
+  100%{opacity:.6;transform:translate(8px,5px)}
 }
 
-/* Light theme adjustments */
-[data-theme="light"] html::after{opacity:.5}
-[data-theme="light"] body::before{opacity:.55 !important}
+[data-theme="light"] body::before{opacity:.45 !important}
 
-/* Mobile: reduce ambient effects */
 @media(max-width:640px){
-  html::after{opacity:.35 !important;animation-duration:35s}
-  body::before{animation-duration:30s !important}
+  body::before{animation-duration:40s !important;opacity:.4 !important}
 }
