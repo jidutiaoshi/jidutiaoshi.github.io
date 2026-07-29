@@ -1,1 +1,22 @@
-{"name":"JiduOS 电竞优化系统","short_name":"JiduOS","description":"Windows电竞级系统精调，远程一对一","start_url":"/","display":"standalone","background_color":"#030609","theme_color":"#00ccff","icons":[{"src":"/jiduLOGO-192.png","sizes":"192x192","type":"image/png"},{"src":"/jiduLOGO-512.png","sizes":"512x512","type":"image/png","purpose":"any maskable"}]}
+{
+  "name": "JiduOS 电竞优化系统",
+  "short_name": "JiduOS",
+  "description": "111+项电竞级系统精调，远程一对一，7天售后",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#030609",
+  "theme_color": "#00ccff",
+  "icons": [
+    {
+      "src": "/jiduLOGO-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/jiduLOGO-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
