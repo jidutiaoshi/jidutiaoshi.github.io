@@ -855,6 +855,69 @@ img[loading="lazy"]{
 .card,.case-card,.platform-card,.policy-card,.feat-card,.prebuy-card,.tool-card{
   border-radius:20px !important;
 }
+
+/* ══════════════════════════════════════ */
+/* FOOTER — structured layout */
+/* ══════════════════════════════════════ */
+.footer-inner{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:32px;
+  max-width:1100px;
+  margin:0 auto;
+  text-align:left !important;
+}
+.footer-brand{
+  grid-column:1/-1;
+  font-size:1.5rem !important;
+  margin-bottom:4px;
+}
+.footer-tagline{
+  grid-column:1/-1;
+  margin-bottom:8px;
+}
+.footer-copy{
+  grid-column:1/-1;
+  font-size:.75rem;
+  color:var(--text4);
+}
+.footer-nav{
+  display:flex;
+  gap:24px;
+  flex-wrap:wrap;
+}
+.footer-nav a{
+  color:var(--text2);
+  font-size:.85rem;
+}
+.footer-nav a:hover{color:var(--heading)}
+.footer-social{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+  font-size:.8rem;
+  color:var(--text3);
+}
+@media(max-width:640px){
+  .footer-inner{grid-template-columns:1fr;gap:20px}
+}
+
+/* ══════════════════════════════════════ */
+/* PRICING TABLE — mobile cards */
+/* ══════════════════════════════════════ */
+@media(max-width:640px){
+  .comp-table-wrap{
+    margin:0 -16px;
+    padding:0 16px;
+  }
+  .comp-table{
+    font-size:11px;
+  }
+  .comp-table th,.comp-table td{
+    padding:8px 4px;
+    word-break:keep-all;
+  }
+}
 [data-theme="light"] #nav{
   background:rgba(255,255,255,.85) !important;
   border-bottom:1px solid rgba(0,0,0,.06);
