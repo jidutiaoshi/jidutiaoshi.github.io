@@ -989,3 +989,7 @@ body::before{
 @media(max-width:768px){
   .scroll-indicator{bottom:8px !important}
 }
+
+/* Hide redundant platform section — content duplicated in footer + why-us */
+.platform-grid{display:none !important}
+section:has(.platform-grid){display:none !important}
