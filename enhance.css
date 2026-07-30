@@ -976,3 +976,16 @@ body::before{
 @media(max-width:640px){
   body::before{animation-duration:60s !important;opacity:.25 !important}
 }
+
+/* Scroll indicator: move away from stats */
+.scroll-indicator{
+  position:absolute !important;
+  bottom:12px !important;
+  left:50% !important;
+  right:auto !important;
+  transform:translateX(-50%) !important;
+  z-index:1 !important;
+}
+@media(max-width:768px){
+  .scroll-indicator{bottom:8px !important}
+}
