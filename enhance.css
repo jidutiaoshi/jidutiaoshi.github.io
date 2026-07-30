@@ -389,8 +389,7 @@ html::before{
   100%{opacity:1;transform:translateX(-50%) scale(1.2)}
 }
 
-/* Starfield: barely visible */
-#gl-starfield{opacity:.2 !important}
+/* Starfield: opacity now controlled by JS (constellation mode ~.38 dark / .55 light) */
 
 /* Disable edge glow */
 html::before{display:none !important}
@@ -783,7 +782,7 @@ img[loading="lazy"]{
 
 /* Mobile: reduce particle count visual load */
 @media(max-width:640px){
-  #gl-starfield{opacity:.35 !important}
+  /* starfield opacity now JS-controlled */
   body::before{opacity:.35 !important}
 }
 
