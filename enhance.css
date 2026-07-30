@@ -388,8 +388,8 @@ html::before{
   100%{opacity:1;transform:translateX(-50%) scale(1.2)}
 }
 
-/* Starfield: subtle */
-#gl-starfield{opacity:.35 !important}
+/* Starfield: barely visible */
+#gl-starfield{opacity:.2 !important}
 
 /* Disable edge glow */
 html::before{display:none !important}
@@ -977,18 +977,11 @@ body::before{
   body::before{animation-duration:60s !important;opacity:.25 !important}
 }
 
-/* Scroll indicator: move away from stats */
-.scroll-indicator{
-  position:absolute !important;
-  bottom:12px !important;
-  left:50% !important;
-  right:auto !important;
-  transform:translateX(-50%) !important;
-  z-index:1 !important;
-}
-@media(max-width:768px){
-  .scroll-indicator{bottom:8px !important}
-}
+/* Scroll indicator: hide — adds noise */
+.scroll-indicator{display:none !important}
+
+/* Hero orbs: hide — championos-style clean hero */
+.hero-orb{display:none !important}
 
 /* Hide redundant platform section — content duplicated in footer + why-us */
 .platform-grid{display:none !important}
