@@ -64,12 +64,13 @@ h1{font-weight:700;letter-spacing:-0.03em;line-height:1.15}
   --ease-out-expo:cubic-bezier(0.16,1,0.3,1);
 }
 
-/* 3. Cards — clean, minimal */
+/* 3. Cards — ultra-minimal, championos-style */
 .card,.case-card,.platform-card,.policy-card,.feat-card,.contact-card-new,.pain,.step-box,.trust-item,.prebuy-card,.tool-card{
   position:relative;
-  border:1px solid rgba(255,255,255,.06) !important;
+  border:1px solid rgba(255,255,255,.04) !important;
   border-radius:16px;
   transition:transform .35s var(--ease-smooth),border-color .35s var(--ease-smooth) !important;
+  box-shadow:none !important;
 }
 [data-theme="light"] .card,[data-theme="light"] .case-card,[data-theme="light"] .platform-card,
 [data-theme="light"] .policy-card,[data-theme="light"] .feat-card,[data-theme="light"] .prebuy-card,
@@ -849,15 +850,15 @@ img[loading="lazy"]{
   .hero h1{font-size:clamp(2rem,6vw,3rem) !important}
 }
 
-/* Section breathing room */
+/* Section breathing room — match championos */
 @media(min-width:769px){
   .section-inner{
-    padding-left:64px !important;
-    padding-right:64px !important;
+    padding-left:72px !important;
+    padding-right:72px !important;
   }
   section:not(.hero):not(.marquee-strip) .section-inner{
-    padding-top:96px !important;
-    padding-bottom:96px !important;
+    padding-top:120px !important;
+    padding-bottom:120px !important;
   }
 }
 @media(max-width:768px){
@@ -947,12 +948,21 @@ img[loading="lazy"]{
   margin-bottom:24px;
 }
 
+/* Section label: quiet */
+.section-label{
+  color:var(--text4) !important;
+  opacity:.5 !important;
+  letter-spacing:3px !important;
+}
 /* Section divider: barely visible */
 .divider{
   height:1px !important;
-  background:rgba(255,255,255,.04) !important;
-  margin:24px 0;
+  background:rgba(255,255,255,.03) !important;
+  margin:16px 0 32px !important;
 }
+/* Heading spacing */
+h2{margin-bottom:.75em !important}
+.section-sub{color:var(--text3) !important;margin-bottom:24px !important}
 
 /* ══════════════════════════════════════ */
 /* ATMOSPHERE — minimal */
