@@ -14,7 +14,7 @@
     return document.documentElement.hasAttribute("data-theme") &&
       document.documentElement.getAttribute("data-theme") === "light";
   }
-  setTimeout(function() { c.style.opacity = isLight() ? ".55" : ".38"; }, 400);
+  setTimeout(function() { c.style.opacity = isLight() ? ".6" : ".45"; }, 400);
 
   var ctx = c.getContext("2d");
   var W, H, N = 220;
