@@ -165,20 +165,24 @@ h1{font-weight:700;letter-spacing:-0.03em;line-height:1.15}
   background:linear-gradient(90deg,transparent 0%,rgba(0,200,255,.2) 10%,rgba(0,200,255,.2) 90%,transparent 100%);
   pointer-events:none;
 }
-/* Tick marks at each stat position */
+/* Tick marks — anchored to each stat (3 stats, centered; %-ticks would misalign) */
 .hero-stats::after{
+  content:none;
+}
+.hero-stats .s{
+  position:relative;
+}
+.hero-stats .s::before{
   content:'';
   position:absolute;
-  top:-2px;left:0;right:0;
-  height:5px;
-  background:
-    linear-gradient(90deg,transparent 9%,var(--cyan) 10%,transparent 11%),
-    linear-gradient(90deg,transparent 29%,var(--cyan) 30%,transparent 31%),
-    linear-gradient(90deg,transparent 49%,var(--cyan) 50%,transparent 51%),
-    linear-gradient(90deg,transparent 69%,var(--cyan) 70%,transparent 71%),
-    linear-gradient(90deg,transparent 89%,var(--cyan) 90%,transparent 91%);
-  opacity:.3;
-  pointer-events:none;
+  top:-2px;left:50%;
+  transform:translateX(-50%);
+  width:1px;height:9px;
+  background:linear-gradient(180deg,rgba(0,200,255,.55),transparent);
+  opacity:.85;
+}
+[data-theme="light"] .hero-stats .s::before{
+  background:linear-gradient(180deg,rgba(0,120,180,.5),transparent);
 }
 .hero-stats .s .n{
   font-weight:600;
@@ -271,8 +275,9 @@ h1{font-weight:700;letter-spacing:-0.03em;line-height:1.15}
   font-size:.65rem;
   font-weight:400;
   opacity:.6;
-  margin-top:2px;
+  margin-top:3px;
   letter-spacing:0;
+  text-align:center;
 }
 
 /* Nav CTA: more prominent */
@@ -630,15 +635,15 @@ h2 .hl{
 
 /* Grid dot overlay - disabled (conflicts with backgrounds) */
 
-/* Badge tag sweep - light sweep across badges */
-.case-card-badge::after,.hero-badge::after{
+/* Badge tag sweep - light sweep across hero badge only (case badge ::after shows the date) */
+.hero-badge::after{
   content:'';
   position:absolute;top:0;left:-100%;width:50%;height:100%;
   background:linear-gradient(90deg,transparent,rgba(255,255,255,.08),transparent);
   transform:skewX(-20deg);
   animation:tagSweep 4s ease-in-out infinite;
 }
-.case-card-badge,.hero-badge{position:relative;overflow:hidden}
+.hero-badge{position:relative;overflow:hidden}
 @keyframes tagSweep{
   0%,100%{left:-100%}
   50%{left:150%}
