@@ -1166,8 +1166,9 @@ h2 .hl{
 /* 38. VISUAL POLISH — precision details   */
 /* ══════════════════════════════════════ */
 
-/* 38a. Safety net: never allow horizontal page scroll */
-html{overflow-x:hidden}
+/* 38a. REMOVED — html{overflow-x:...} on <html> breaks wheel scrolling
+   in Chromium (any non-visible overflow-x switches the scroll container).
+   Horizontal overflow was already fixed at the source (.page-hero::before). */
 
 /* 38b. Keyboard focus — cyan instrument outline */
 :focus-visible{
