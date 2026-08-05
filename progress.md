@@ -20,3 +20,19 @@
 
 ### 会话总结
 四个技能全部使用：planning-with-files ✅ webapp-testing ✅ frontend-design ✅ debug ✅
+
+## 会话 #2 — 2026-07-30
+
+### 已完成
+- [x] 修复: 移动端 .page-hero::before(500px 光晕)撑出横向滚动 → width:min(500px,70vw) + html{overflow-x:hidden} 兜底
+- [x] 视觉细节: hero h1 顶部白线 → 青色仪器刻度线(44px 渐变+微光)
+- [x] 键盘焦点 :focus-visible 青色 outline(无障碍)
+- [x] footer 顶部青色渐变 hairline 分隔
+- [x] back-top 悬停青色上浮
+- [x] pricing 对比表表头: 青色渐变细线 + 副标题字距
+
+### 验证
+- 全站 5 页 × 桌面/移动 scrollWidth = 视口宽, 无横向滚动
+- 5 页 div 配对全 OK; enhance.css 花括号 312/312 平衡
+- Playwright(Edge headless): 无 console/page errors; fade-up 滚动触发正常
+- 未改任何 HTML 压缩文件(铁律 #1 遵守)
