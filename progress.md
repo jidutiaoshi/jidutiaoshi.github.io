@@ -43,7 +43,7 @@
 - 用户反馈网站无法用滚轮向下滚动
 
 ### 根因
-- enhance.css 38a : 在 Chromium 中,html 元素上任何非 visible 的 overflow-x 会把滚动容器从视口切换到 html 元素,导致滚轮滚动失效(键盘滚动正常)
+- enhance.css 38a 的 html{overflow-x:hidden} 规则: 在 Chromium 中,html 元素上任何非 visible 的 overflow-x 会把滚动容器从视口切换到 html 元素,导致滚轮滚动失效(键盘滚动正常)
 - 定位方法: Playwright 真实滚轮输入(page.mouse.wheel)对照实验: 无 enhance.css 时正常(600),有则失效(0);逐一禁用装饰层后确认只有 html overflow-x 生效
 
 ### 修复
