@@ -56,3 +56,15 @@
 
 ### 教训
 - **不要在 html 上设置 overflow-x:hidden/clip** —— 会破坏 Chromium 滚轮滚动;横向溢出要修根因
+
+## 会话 #4 — 2026-08-05 (字体自托管)
+
+### 已完成
+- [x] Inter / Noto Sans SC / Space Grotesk 全部分片(111 woff2, 4.6MB)下载到 fonts/, fonts.css 本地化 URL
+- [x] 5 页 HTML: 移除 4 个 Google Fonts 引用(preconnect×2 + gstatic + css2 link), 改为 <link rel="stylesheet" href="/fonts/fonts.css">
+- [x] 发现并修复既有问题: 页面原本只加载 Noto Sans SC + Space Grotesk, Inter 从未加载过(enhance.css 首选 Inter 一直静默回退) — 自托管后 Inter 补齐
+
+### 验证
+- 5 页 × Playwright: 无任何 fonts.googleapis.com/gstatic 请求; document.fonts 强制加载 Inter/Space Grotesk/Noto 全 true; 无 404/报错
+- 铁律 #8 回归: 滚轮 OK、scrollWidth 正常、div 配对 OK、括号 312/312 + 343/343
+- 注意: 下载时踩坑 — Google Fonts 多族请求的 CSS 响应可能不含 CJK 分片(缓存差异), 需单独请求 Noto Sans SC 合并; 本地化 URL 要去掉 s/family/version/ 路径前缀
