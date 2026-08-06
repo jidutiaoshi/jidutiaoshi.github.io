@@ -68,3 +68,14 @@
 - 5 页 × Playwright: 无任何 fonts.googleapis.com/gstatic 请求; document.fonts 强制加载 Inter/Space Grotesk/Noto 全 true; 无 404/报错
 - 铁律 #8 回归: 滚轮 OK、scrollWidth 正常、div 配对 OK、括号 312/312 + 343/343
 - 注意: 下载时踩坑 — Google Fonts 多族请求的 CSS 响应可能不含 CJK 分片(缓存差异), 需单独请求 Noto Sans SC 合并; 本地化 URL 要去掉 s/family/version/ 路径前缀
+
+## 会话 #5 — 2026-08-05 (基建清理)
+
+### 已完成
+- [x] enhance.css 去重: 合并 body/.section-sub/.hero-orb-2/.hero-orb-3 的重复块(8个→4处), 228→220 规则; @media 块保持原位(合并会改变级联: 实测 60s→45s 动画时长变化)
+- [x] 案例页数据化: 新建 cases-data.js(CASES 数组+渲染), cases.html 仅加一行 script 引用; 写死卡片保留(供无 JS 爬虫, SEO 友好); 新增案例只需改 CASES 数组
+
+### 验证
+- 去重前后 5页×2宽×22属性 computed style 全对比: ZERO diffs(排除动画帧噪音)
+- 渲染后 5 卡与原始 DOM 内容/结构逐卡一致; 全量回归: 滚轮/溢出/报错全 OK
+- 教训: </div> 不以 <div 开头(indexOf 匹配不到); 抽取数据时须拦截渲染脚本避免自引用

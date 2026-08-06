@@ -52,6 +52,10 @@ h2 .hl{
   margin-bottom:8px;
 }
 body{
+  font-synthesis:none;
+  font-kerning:normal;
+  font-variant-ligatures:common-ligatures contextual;
+
   font-family:'Inter','Noto Sans SC','Microsoft YaHei',sans-serif !important;
 }
 h1{font-weight:700;letter-spacing:-0.03em;line-height:1.15}
@@ -701,8 +705,16 @@ h2 .hl{
 
 /* 32. Hero orbs - softer cyan/purple gradient */
 .hero-orb-1{background:radial-gradient(circle,rgba(0,200,255,.4),transparent) !important}
-.hero-orb-2{background:radial-gradient(circle,rgba(100,60,255,.3),transparent) !important}
-.hero-orb-3{background:radial-gradient(circle,rgba(0,180,220,.35),transparent) !important}
+.hero-orb-2{
+  width:300px !important;height:300px !important;
+  top:40% !important;right:-10% !important;
+  animation:orbFloat2 8s ease-in-out infinite alternate !important;
+background:radial-gradient(circle,rgba(100,60,255,.3),transparent) !important}
+.hero-orb-3{
+  width:250px !important;height:250px !important;
+  bottom:-10% !important;left:30% !important;
+  animation:orbFloat3 12s ease-in-out infinite alternate !important;
+background:radial-gradient(circle,rgba(0,180,220,.35),transparent) !important}
 
 /* 33. ULTRA card glow border */
 .card.featured{
@@ -968,7 +980,12 @@ img[loading="lazy"]{
 }
 /* Heading spacing */
 h2{margin-bottom:.75em !important}
-.section-sub{color:var(--text3) !important;margin-bottom:24px !important}
+.section-sub{
+  color:var(--text3);
+  font-size:1.05rem;
+  line-height:1.6;
+  max-width:600px;
+color:var(--text3) !important;margin-bottom:24px !important}
 
 /* ══════════════════════════════════════ */
 /* ATMOSPHERE — minimal */
