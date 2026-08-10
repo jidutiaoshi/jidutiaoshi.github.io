@@ -1255,9 +1255,6 @@ h2 .hl{
 [data-theme="light"] .pain h3{
   color:#1a1a2e !important;
 }
-[data-theme="light"] .comp-table th{
-  color:#0b6a88 !important;
-}
 /* .step-box 流程小字(写死 #4a5a70): dark 提亮 / light 加深 */
 .step-box p{color:#7084a0}
 [data-theme="light"] .step-box p{color:#33445c}
@@ -1269,9 +1266,8 @@ h2 .hl{
 /* 对比表表头: light 下加深 */
 [data-theme="light"] .comp-table th{color:#0a4a5e !important}
 /* 案例数据色(绿/橙): light 下加深 */
-[data-theme="light"] .cd-n.up{color:#0f5a38}
-[data-theme="light"] .cd-n.hot{color:#7a3608}
 [data-theme="light"] .cd-n.up{color:#0a4a2e}
+[data-theme="light"] .cd-n.hot{color:#7a3608}
 /* 案例徽章文字: light 下加深(原色在浅底不可读) */
 [data-theme="light"] .badge-extreme{color:#5a3f14}
 [data-theme="light"] .badge-pro{color:#0a4a5e}
