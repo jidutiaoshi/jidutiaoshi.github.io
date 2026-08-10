@@ -79,3 +79,14 @@
 - 去重前后 5页×2宽×22属性 computed style 全对比: ZERO diffs(排除动画帧噪音)
 - 渲染后 5 卡与原始 DOM 内容/结构逐卡一致; 全量回归: 滚轮/溢出/报错全 OK
 - 教训: </div> 不以 <div 开头(indexOf 匹配不到); 抽取数据时须拦截渲染脚本避免自引用
+
+## 会话 #6 — 2026-08-05 (继续排查)
+
+### 已完成
+- [x] 每日例行: 百度推送 4 条成功; CDN 已验证为最新版(去重/字体/案例数据化全部生效), 无需 Purge
+- [x] 移动端对比表优化: @390 下 comp-table 列宽 60-71px 太窄, 内容挤成竖条(行高 55px) → enhance.css 640px 断点加 .comp-table{min-width:520px} + wrap overflow-x:auto; 列宽恢复 98-152px, 行高降到 36px, 容器内横滑, 页面级无溢出
+- [x] 404 页补 WebSite JSON-LD(与其余 4 页对齐; 原只有 index 有 Organization/WebSite/ProfessionalService/FAQPage/Product)
+
+### 验证
+- 铁律 #8 全量回归: 5 页×2 宽滚轮 OK / 无溢出 / 无报错; 括号 312/312
+- 注意: enhance.css 已为 CRLF 行尾, node 脚本改文件前需 .replace(/\r\n/g,"\n")

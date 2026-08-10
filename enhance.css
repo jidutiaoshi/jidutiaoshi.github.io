@@ -942,8 +942,11 @@ img[loading="lazy"]{
   .comp-table-wrap{
     margin:0 -16px;
     padding:0 16px;
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
   }
   .comp-table{
+    min-width:520px;
     font-size:11px;
   }
   .comp-table th,.comp-table td{
