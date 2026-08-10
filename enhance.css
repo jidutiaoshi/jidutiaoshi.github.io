@@ -1278,3 +1278,8 @@ h2 .hl{
 [data-theme="light"] .btn-ghost{color:#3d4d63}
 /* mobile-menu 链接: light 下加深 */
 [data-theme="light"] .mobile-menu .nav-link{color:#0a4a5e}
+/* back-top 图标: light 下深青(浅青底 1.65:1 -> ~5:1) */
+[data-theme="light"] .back-top{
+  color:#0a4a5e;
+  border-color:rgba(10,74,94,.35);
+}
