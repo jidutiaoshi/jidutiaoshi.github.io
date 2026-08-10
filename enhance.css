@@ -1283,3 +1283,6 @@ h2 .hl{
   color:#0a4a5e;
   border-color:rgba(10,74,94,.35);
 }
+[data-theme="light"] .back-top:hover{
+  color:#0a4a5e !important;
+}
