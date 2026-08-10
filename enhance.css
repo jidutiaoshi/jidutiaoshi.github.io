@@ -1236,3 +1236,49 @@ h2 .hl{
   background:linear-gradient(90deg,transparent,rgba(0,200,255,.35),transparent);
   pointer-events:none;
 }
+
+/* ══════════════════════════════════════ */
+/* 39. CONTRAST FIXES (WCAG AA)          */
+/* ══════════════════════════════════════ */
+
+/* Secondary text: lift dark-theme contrast (3.7:1 -> ~5:1) */
+:root{
+  --text3:#8898ac;
+  --text4:#7084a0;
+}
+/* Light theme: darken secondary text + fix light-on-light elements */
+[data-theme="light"]{
+  --text2:#4a4048;
+  --text3:#33445c;
+  --text4:#2f3f55;
+}
+[data-theme="light"] .pain h3{
+  color:#1a1a2e !important;
+}
+[data-theme="light"] .comp-table th{
+  color:#0b6a88 !important;
+}
+/* .step-box 流程小字(写死 #4a5a70): dark 提亮 / light 加深 */
+.step-box p{color:#7084a0}
+[data-theme="light"] .step-box p{color:#33445c}
+/* nav-link 青色: light 下加深(nav 前缀+important 压过内联规则) */
+[data-theme="light"] nav .nav-link{color:#0a4a5e !important}
+[data-theme="light"] nav .nav-link.active,
+[data-theme="light"] nav .nav-link[aria-current="page"],
+[data-theme="light"] .mobile-menu .nav-link.active{color:#073f52 !important}
+/* 对比表表头: light 下加深 */
+[data-theme="light"] .comp-table th{color:#0a4a5e !important}
+/* 案例数据色(绿/橙): light 下加深 */
+[data-theme="light"] .cd-n.up{color:#0f5a38}
+[data-theme="light"] .cd-n.hot{color:#7a3608}
+[data-theme="light"] .cd-n.up{color:#0a4a2e}
+/* 案例徽章文字: light 下加深(原色在浅底不可读) */
+[data-theme="light"] .badge-extreme{color:#5a3f14}
+[data-theme="light"] .badge-pro{color:#0a4a5e}
+[data-theme="light"] .badge-ultra{color:#5a2a9e}
+[data-theme="light"] .badge-basic{color:#0a4a2e}
+[data-theme="light"] .badge-diagnose{color:#33445c}
+/* 幽灵按钮: light 下文字加深 */
+[data-theme="light"] .btn-ghost{color:#3d4d63}
+/* mobile-menu 链接: light 下加深 */
+[data-theme="light"] .mobile-menu .nav-link{color:#0a4a5e}

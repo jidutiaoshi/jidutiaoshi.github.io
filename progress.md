@@ -90,3 +90,19 @@
 ### 验证
 - 铁律 #8 全量回归: 5 页×2 宽滚轮 OK / 无溢出 / 无报错; 括号 312/312
 - 注意: enhance.css 已为 CRLF 行尾, node 脚本改文件前需 .replace(/\r\n/g,"\n")
+
+## 会话 #7 — 2026-08-05 (对比度审计 WCAG AA)
+
+### 问题
+- 全站 8 组合(4 页 × dark/light)共 138 处文本对比度低于 WCAG AA(4.5:1 正文 / 3:1 大字)
+- 严重: light 主题下 .pain h3 白字浅底 1.04:1(完全不可读)、案例徽章 1.03-1.78:1、对比表表头青色 1.5-1.9:1、导航激活青色 1.6:1
+- dark 主题: 次级小字 --text4 #5a6a80 3.7:1、.step-box p 写死 #4a5a70 2.89:1
+
+### 修复(enhance.css 39 块)
+- 变量: dark --text3/4 提亮(#8898ac/#7084a0); light --text2/3/4 加深(#4a4048/#33445c/#2f3f55)
+- light 覆盖: .pain h3、.step-box p、badge×5、nav-link(含 mobile-menu)、btn-ghost、comp-table th、cd-n up/hot
+- 注意: .steps p 实际选择器是 .step-box p; nav-link 需 nav 前缀+!important 压过内联 nav .nav-link
+
+### 验证
+- 对比度审计: 8 组合全部 0 不达标(301 元素全过 AA)
+- 铁律 #8 回归: 5 页×2 宽滚轮 OK、无溢出、无报错、括号 331/331
