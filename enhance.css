@@ -1293,3 +1293,32 @@ h2 .hl{
 .download-box .dl-name span{color:#8fa6b8;font-size:14px;font-weight:400}
 .download-box .btn{margin-bottom:16px}
 .download-box p{color:#8fa6b8;font-size:14px;line-height:1.6;margin:0}
+
+/* ── 深海流体 Hero 背景(hero-fluid.js 注入) ── */
+.jd-fluid,.jd-caustic{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;display:block}
+.jd-glow,.jd-spot{position:absolute;top:0;left:0;right:0;bottom:0;pointer-events:none}
+.jd-fluid{z-index:0}
+.jd-caustic{z-index:1;mix-blend-mode:screen;opacity:.15}
+.jd-glow{z-index:1;mix-blend-mode:screen;background:radial-gradient(ellipse 55% 45% at 50% -8%,rgba(0,200,255,.26) 0%,rgba(0,120,200,.10) 40%,transparent 66%)}
+.jd-spot{z-index:2;mix-blend-mode:screen;background:radial-gradient(620px circle at var(--mx,50%) var(--my,30%),rgba(0,200,255,.11),transparent 60%)}
+.jd-ringwrap{position:absolute;left:50%;top:44%;transform:translate(-50%,-50%);z-index:2;pointer-events:none}
+.jd-ring{width:340px;height:340px;border-radius:50%;position:relative;border:1px solid rgba(0,200,255,.14);animation:jdSpin 18s linear infinite}
+.jd-ring::before{content:'';position:absolute;top:18px;left:18px;right:18px;bottom:18px;border-radius:50%;border:1px dashed rgba(0,200,255,.12)}
+.jd-ring .jd-dot{position:absolute;top:-4px;left:50%;width:8px;height:8px;border-radius:50%;background:#00f0ff;box-shadow:0 0 16px #00f0ff}
+@keyframes jdSpin{to{transform:rotate(360deg)}}
+.jd-core{position:absolute;left:50%;top:44%;transform:translate(-50%,-50%);width:150px;height:150px;border-radius:50%;z-index:2;pointer-events:none;background:radial-gradient(circle at 40% 35%,rgba(160,240,255,.5),rgba(0,150,220,.15) 45%,transparent 70%);filter:blur(1px);animation:jdBreathe 5s ease-in-out infinite}
+@keyframes jdBreathe{0%,100%{opacity:.7;transform:translate(-50%,-50%) scale(1)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.08)}}
+
+/* hero 文案提到流体之上 */
+.hero .hero-badge,.hero h1,.hero .hero-sub,.hero .btn-group,.hero .hero-stats{position:relative;z-index:5}
+.hero .scroll-indicator{z-index:5}
+/* 深海标题渐变(更丰富) */
+.hero h1 .grad{background:linear-gradient(100deg,#7deaff 0%,#00f0ff 30%,#38bdf8 60%,#818cf8 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+/* 流体接管后关闭旧 aurora + orb(display:none 同时消除其横向溢出) */
+.hero::before{display:none}
+.hero-orb{display:none}
+
+@media(max-width:640px){
+  .jd-ringwrap,.jd-core{display:none}
+  .jd-caustic{opacity:.08}
+}
