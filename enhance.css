@@ -68,27 +68,6 @@ h1{font-weight:700;letter-spacing:-0.03em;line-height:1.15}
   --ease-out-expo:cubic-bezier(0.16,1,0.3,1);
 }
 
-/* 3. Cards — ultra-minimal, championos-style */
-.card,.case-card,.platform-card,.policy-card,.feat-card,.contact-card-new,.pain,.step-box,.trust-item,.prebuy-card,.tool-card{
-  position:relative;
-  border:1px solid rgba(255,255,255,.04) !important;
-  border-radius:16px;
-  transition:transform .35s var(--ease-smooth),border-color .35s var(--ease-smooth) !important;
-  box-shadow:none !important;
-}
-[data-theme="light"] .card,[data-theme="light"] .case-card,[data-theme="light"] .platform-card,
-[data-theme="light"] .policy-card,[data-theme="light"] .feat-card,[data-theme="light"] .prebuy-card,
-[data-theme="light"] .tool-card,[data-theme="light"] .contact-card-new{
-  border-color:rgba(0,0,0,.06) !important;
-}
-.card:hover,.case-card:hover,.platform-card:hover,.policy-card:hover,
-.feat-card:hover,.prebuy-card:hover,.tool-card:hover,.contact-card-new:hover{
-  transform:translateY(-2px);
-  border-color:rgba(255,255,255,.1) !important;
-}
-[data-theme="light"] .card:hover,[data-theme="light"] .case-card:hover{
-  border-color:rgba(0,0,0,.12) !important;
-}
 
 /* Remove all pseudo-element glow overlays */
 .card::before,.card::after,
@@ -807,24 +786,6 @@ img[loading="lazy"]{
 /* 36. CARDS — SUBTLE DEPTH */
 /* ══════════════════════════════════════ */
 
-/* Clean background for cards, no glass effect */
-.card,.case-card,.platform-card,.policy-card,.feat-card,.pain,.step-box,.trust-item,.prebuy-card,.tool-card,.contact-card-new,.faq-item,.story-content{
-  background:rgba(255,255,255,.012) !important;
-}
-[data-theme="light"] .card,[data-theme="light"] .case-card,[data-theme="light"] .platform-card,
-[data-theme="light"] .policy-card,[data-theme="light"] .feat-card,[data-theme="light"] .pain,
-[data-theme="light"] .step-box,[data-theme="light"] .trust-item,[data-theme="light"] .prebuy-card,
-[data-theme="light"] .tool-card,[data-theme="light"] .contact-card-new{
-  background:rgba(0,0,0,.015) !important;
-}
-
-/* Featured card: clean with subtle accent border */
-.card.featured{
-  border-color:rgba(255,255,255,.12) !important;
-}
-[data-theme="light"] .card.featured{
-  border-color:rgba(0,0,0,.12) !important;
-}
 
 /* Nav: match warm dark */
 #nav{
@@ -1092,20 +1053,6 @@ html::before{
   .section-label::before,.section-label::after{width:16px}
 }
 
-/* 37e. Card depth — inset top highlight + hover glow */
-.card,.case-card,.platform-card,.feat-card,.prebuy-card,.tool-card,.contact-card-new{
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.04) !important;
-}
-.card:hover,.case-card:hover,.platform-card:hover,.feat-card:hover,
-.prebuy-card:hover,.tool-card:hover,.contact-card-new:hover{
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.06), 0 20px 50px rgba(0,0,0,.35) !important;
-}
-[data-theme="light"] .card:hover,[data-theme="light"] .case-card:hover,
-[data-theme="light"] .platform-card:hover,[data-theme="light"] .feat-card:hover,
-[data-theme="light"] .prebuy-card:hover,[data-theme="light"] .tool-card:hover,
-[data-theme="light"] .contact-card-new:hover{
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.4), 0 16px 40px rgba(0,0,0,.08) !important;
-}
 
 /* 37f. HUD corner brackets on card hover */
 .card::before,.case-card::before,.platform-card::before,.feat-card::before,
@@ -1336,21 +1283,39 @@ h2 .hl{
   background:linear-gradient(100deg,#7deaff 0%,#00f0ff 30%,#38bdf8 60%,#818cf8 100%);
   -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
 }
-/* 关键卡片玻璃化:渐变底 + 青边 + 顶部高光 + 悬浮阴影(深度感,暗底不靠 backdrop 硬糊)
-   !important 覆盖上一版「极简 championos」遗留的 !important 规则 */
+/* ═══ 深海卡片(统一):渐变底 + 青边 + 顶部高光 + 悬浮阴影 ═══
+   单一来源:已替代 championos 极简卡 / SUBTLE DEPTH 浅底 / 37e 卡深度(均已删) */
 .card,.case-card,.contact-card-new,.cta-card,.policy-card{
-  background:linear-gradient(165deg, rgba(18,44,66,.52) 0%, rgba(8,20,32,.58) 100%) !important;
+  position:relative;
+  background:linear-gradient(165deg, rgba(18,44,66,.52) 0%, rgba(8,20,32,.58) 100%);
   backdrop-filter:blur(14px);
   -webkit-backdrop-filter:blur(14px);
-  border:1px solid rgba(0,200,255,.18) !important;
-  box-shadow:inset 0 1px 0 rgba(165,232,255,.10), 0 10px 32px rgba(0,8,16,.40) !important;
+  border:1px solid rgba(0,200,255,.18);
+  box-shadow:inset 0 1px 0 rgba(165,232,255,.10), 0 10px 32px rgba(0,8,16,.40);
+  transition:transform .35s var(--ease-smooth),border-color .35s var(--ease-smooth),box-shadow .35s var(--ease-smooth);
 }
-/* 首页内容卡片同族深度处理 */
+.card:hover,.case-card:hover,.contact-card-new:hover,.cta-card:hover,.policy-card:hover{
+  transform:translateY(-3px);
+  border-color:rgba(0,200,255,.34);
+  box-shadow:inset 0 1px 0 rgba(165,232,255,.14), 0 16px 44px rgba(0,140,200,.18);
+}
+/* 首页内容卡片(同族,略轻) */
 .pain,.step-box,.testimonial,.trust-item,.platform-card,.feat-card,.prebuy-card,.tool-card{
-  background:linear-gradient(165deg, rgba(16,40,62,.44) 0%, rgba(8,20,32,.50) 100%) !important;
-  border-color:rgba(0,200,255,.12) !important;
-  box-shadow:inset 0 1px 0 rgba(165,232,255,.07), 0 8px 26px rgba(0,8,16,.32) !important;
+  position:relative;
+  background:linear-gradient(165deg, rgba(16,40,62,.44) 0%, rgba(8,20,32,.50) 100%);
+  border-color:rgba(0,200,255,.12);
+  box-shadow:inset 0 1px 0 rgba(165,232,255,.07), 0 8px 26px rgba(0,8,16,.32);
 }
-/* 对比表分隔线青化+提亮(与玻璃卡片协调) */
-.comp-table th,.comp-table td{border-bottom-color:rgba(0,200,255,.10) !important}
-.comp-table th{border-bottom-color:rgba(0,200,255,.22) !important}
+/* 亮色主题:卡片改浅玻璃 */
+[data-theme="light"] .card,[data-theme="light"] .case-card,[data-theme="light"] .contact-card-new,
+[data-theme="light"] .cta-card,[data-theme="light"] .policy-card,[data-theme="light"] .pain,
+[data-theme="light"] .step-box,[data-theme="light"] .testimonial,[data-theme="light"] .trust-item,
+[data-theme="light"] .platform-card,[data-theme="light"] .feat-card,[data-theme="light"] .prebuy-card,
+[data-theme="light"] .tool-card{
+  background:rgba(255,255,255,.55);
+  border-color:rgba(0,0,0,.08);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.7), 0 8px 24px rgba(0,0,0,.06);
+}
+/* 对比表分隔线青化 */
+.comp-table th,.comp-table td{border-bottom-color:rgba(0,200,255,.10)}
+.comp-table th{border-bottom-color:rgba(0,200,255,.22)}
