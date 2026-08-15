@@ -1336,20 +1336,21 @@ h2 .hl{
   background:linear-gradient(100deg,#7deaff 0%,#00f0ff 30%,#38bdf8 60%,#818cf8 100%);
   -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
 }
-/* 关键卡片玻璃化:渐变底 + 青边 + 顶部高光 + 悬浮阴影(深度感,暗底不靠 backdrop 硬糊) */
+/* 关键卡片玻璃化:渐变底 + 青边 + 顶部高光 + 悬浮阴影(深度感,暗底不靠 backdrop 硬糊)
+   !important 覆盖上一版「极简 championos」遗留的 !important 规则 */
 .card,.case-card,.contact-card-new,.cta-card,.policy-card{
-  background:linear-gradient(165deg, rgba(18,44,66,.52) 0%, rgba(8,20,32,.58) 100%);
+  background:linear-gradient(165deg, rgba(18,44,66,.52) 0%, rgba(8,20,32,.58) 100%) !important;
   backdrop-filter:blur(14px);
   -webkit-backdrop-filter:blur(14px);
-  border:1px solid rgba(0,200,255,.18);
-  box-shadow:inset 0 1px 0 rgba(165,232,255,.10), 0 10px 32px rgba(0,8,16,.40);
+  border:1px solid rgba(0,200,255,.18) !important;
+  box-shadow:inset 0 1px 0 rgba(165,232,255,.10), 0 10px 32px rgba(0,8,16,.40) !important;
 }
 /* 首页内容卡片同族深度处理 */
 .pain,.step-box,.testimonial,.trust-item,.platform-card,.feat-card,.prebuy-card,.tool-card{
-  background:linear-gradient(165deg, rgba(16,40,62,.44) 0%, rgba(8,20,32,.50) 100%);
-  border-color:rgba(0,200,255,.12);
-  box-shadow:inset 0 1px 0 rgba(165,232,255,.07), 0 8px 26px rgba(0,8,16,.32);
+  background:linear-gradient(165deg, rgba(16,40,62,.44) 0%, rgba(8,20,32,.50) 100%) !important;
+  border-color:rgba(0,200,255,.12) !important;
+  box-shadow:inset 0 1px 0 rgba(165,232,255,.07), 0 8px 26px rgba(0,8,16,.32) !important;
 }
 /* 对比表分隔线青化+提亮(与玻璃卡片协调) */
-.comp-table th,.comp-table td{border-bottom-color:rgba(0,200,255,.10)}
-.comp-table th{border-bottom-color:rgba(0,200,255,.22)}
+.comp-table th,.comp-table td{border-bottom-color:rgba(0,200,255,.10) !important}
+.comp-table th{border-bottom-color:rgba(0,200,255,.22) !important}
