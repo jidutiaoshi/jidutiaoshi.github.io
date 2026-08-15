@@ -1322,3 +1322,24 @@ h2 .hl{
   .jd-ringwrap,.jd-core{display:none}
   .jd-caustic{opacity:.08}
 }
+
+/* ── 全站深海统一:子页面 page-hero + 卡片玻璃 ── */
+/* 子页面顶部标题区深海背景(与首页 hero 同族色系) */
+.page-hero{
+  background:
+    radial-gradient(ellipse 55% 45% at 50% -8%, rgba(0,200,255,.20) 0%, rgba(0,120,200,.08) 40%, transparent 66%),
+    radial-gradient(ellipse 45% 55% at 82% 18%, rgba(0,150,220,.11) 0%, transparent 55%),
+    linear-gradient(180deg, #06182a 0%, #02070f 100%);
+}
+/* 子页面主标题渐变(同首页「浮出水面」) */
+.page-hero h1{
+  background:linear-gradient(100deg,#7deaff 0%,#00f0ff 30%,#38bdf8 60%,#818cf8 100%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+}
+/* 关键卡片玻璃化(轻量:半透明海军蓝 + 背景模糊 + 青边;不碰密集表格) */
+.card,.case-card,.contact-card-new,.cta-card,.policy-card{
+  background:rgba(9,24,40,.48);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  border-color:rgba(0,200,255,.10);
+}
