@@ -4,8 +4,9 @@
  * 降级: 无 WebGL 跳过流体/焦散,保留 CSS 渐变兜底;hero 滚出视口即暂停(省 GPU)
  */
 (function () {
-  var hero = document.querySelector('.hero');
+  var hero = document.querySelector('.hero') || document.querySelector('.page-hero');
   if (!hero) return;
+  var isPageHero = hero.classList.contains('page-hero');
 
   function el(tag, cls, id) {
     var e = document.createElement(tag);
@@ -25,8 +26,10 @@
   hero.appendChild(fluid);
   hero.appendChild(caustic);
   hero.appendChild(glow);
-  hero.appendChild(ringwrap);
-  hero.appendChild(core);
+  if (!isPageHero) {
+    hero.appendChild(ringwrap);
+    hero.appendChild(core);
+  }
   hero.appendChild(spot);
 
   // 1.5 让两个 canvas 精确铺满 hero(px)。canvas 是替换元素,

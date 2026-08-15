@@ -795,37 +795,54 @@ img[loading="lazy"]{
   border-bottom:1px solid rgba(255,255,255,.04);
 }
 
-/* Hero: left-aligned like championos */
+/* Hero: 分栏布局 — 文字左 + 工具截图右(深海,学至尊) */
 .hero{
-  align-items:flex-start !important;
+  flex-direction:row !important;
+  align-items:center !important;
+  justify-content:center !important;
   text-align:left !important;
+  gap:56px;
   padding-top:120px !important;
   padding-bottom:80px !important;
+  padding-left:6vw !important;
+  padding-right:6vw !important;
 }
-.hero h1,.hero .hero-sub,.hero .section-sub,.hero .hero-badge{
-  text-align:left !important;
-  margin-left:0 !important;
-  margin-right:auto !important;
+.hero-content{
+  position:relative;z-index:5;
+  display:flex;flex-direction:column;align-items:flex-start;
+  flex:0 1 560px;max-width:600px;
+}
+.hero-content .hero-badge,
+.hero-content h1,
+.hero-content .hero-sub,
+.hero-content .btn-group,
+.hero-content .hero-stats{
+  margin-left:0;margin-right:auto;
 }
 .hero h1{
-  font-size:clamp(3rem,8vw,7.5rem) !important;
-  margin-bottom:32px !important;
+  font-size:clamp(2.4rem,4.6vw,4rem) !important;
+  margin-bottom:24px !important;
 }
-.hero .section-sub{
-  max-width:520px !important;
+.hero-shot{
+  position:relative;z-index:5;
+  flex:0 1 560px;max-width:560px;
 }
-@media(max-width:768px){
-  .hero{
-    align-items:center !important;
-    text-align:center !important;
-  }
-  .hero h1,.hero .hero-sub,.hero .section-sub{
-    text-align:center !important;
-    margin-left:auto !important;
-    margin-right:auto !important;
-  }
-  .hero h1{font-size:clamp(2rem,6vw,3rem) !important}
+.hero-shot img{
+  width:100%;display:block;
+  border-radius:16px;
+  border:1px solid rgba(0,200,255,.20);
+  box-shadow:0 24px 70px rgba(0,0,0,.55), 0 0 80px rgba(0,200,255,.10);
 }
+@media(max-width:900px){
+  .hero{flex-direction:column !important;align-items:center !important;text-align:center !important;gap:40px;padding-left:20px !important;padding-right:20px !important}
+  .hero-content{align-items:center;max-width:100%}
+  .hero-content .hero-badge,.hero-content h1,.hero-content .hero-sub,.hero-content .btn-group,.hero-content .hero-stats{margin-left:auto;margin-right:auto}
+  .hero-content h1,.hero-content .hero-sub{text-align:center !important}
+  .hero-shot{max-width:520px;width:100%}
+}
+
+/* 子页面 page-hero 文案提到流体之上 */
+.page-hero h1,.page-hero .sub{position:relative;z-index:5}
 
 /* Section breathing room — match championos */
 @media(min-width:769px){
