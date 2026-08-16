@@ -1068,9 +1068,9 @@ let lastUpdateTime = Date.now();
 let colorUpdateTimer = 0.0;
 setInterval(() => {
     if (config.PAUSED) return;
-    let c = generateColor(); c.g *= 0.8; c.b *= 0.8;
+    let c = generateColor(); c.g *= 0.9; c.b *= 0.9;
     splat(Math.random(), Math.random(), 1100 * (Math.random() - 0.5), 1100 * (Math.random() - 0.5), c);
-}, 800);
+}, 600);
 window.__jiduFluidIdle = false;
 document.addEventListener('visibilitychange', () => { window.__jiduFluidIdle = document.hidden; });
 window.__jiduFluid = { splat, generateColor, config };

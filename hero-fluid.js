@@ -59,7 +59,7 @@
   if (!webglOK) return;
 
   var s = document.createElement('script');
-  s.src = '/fluid-jiduos.js';
+  s.src = '/fluid-jiduos.js?v=2';
   s.onload = function () {
     var F = window.__jiduFluid;
     if (!F || !F.splat) return;
