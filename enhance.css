@@ -1358,3 +1358,21 @@ nav .nav-link::after{height:2px}
   .tool-showcase{grid-template-columns:1fr;gap:36px}
   .tool-shot{max-width:520px;margin:0 auto;width:100%}
 }
+
+/* ── 移动端首屏打磨(P0) ── */
+@media(max-width:640px){
+  /* 5. 收紧垂直留白 */
+  .hero{padding:92px 16px 40px !important;gap:24px !important}
+  /* 1. 渐变更亮(浮出水面对比) + 副标题加大 */
+  .hero h1 .grad{background:linear-gradient(100deg,#d6f9ff 0%,#7ef0ff 30%,#4dd3ff 60%,#bccaff 100%) !important;-webkit-background-clip:text !important;-webkit-text-fill-color:transparent !important}
+  .hero .hero-sub{font-size:16px;line-height:1.65;margin-bottom:20px}
+  /* 2. 统计间距 + 标签加大 */
+  .hero-stats{gap:22px !important;padding-top:14px !important;justify-content:center}
+  .hero-stats .s .n{font-size:30px !important}
+  .hero-stats .s .l{font-size:12px !important;letter-spacing:1px;margin-top:6px}
+  /* 3. 截图略放大 */
+  .hero-shot{width:96%}
+  /* 4. 按钮全宽 */
+  .hero .btn-group{width:100%;max-width:340px;margin:0 auto;align-items:stretch !important}
+  .hero .btn-group .btn{width:100% !important;max-width:none !important}
+}
