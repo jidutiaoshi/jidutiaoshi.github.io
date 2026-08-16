@@ -1343,3 +1343,18 @@ h2 .hl{
 nav .nav-link::after{height:2px}
 /* 统计数字单位对齐 */
 .hero-stats .s .n::after{margin-left:2px;font-size:.38em}
+
+/* ── 自研工具 showcase ── */
+.tool-showcase{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;margin:0 auto}
+.tool-points{display:flex;flex-direction:column;gap:16px}
+.tool-point{display:flex;gap:16px;align-items:flex-start;text-align:left;padding:20px 22px;border-radius:14px;position:relative;background:linear-gradient(165deg,rgba(16,40,62,.44) 0%,rgba(8,20,32,.50) 100%);border:1px solid rgba(0,200,255,.12);box-shadow:inset 0 1px 0 rgba(165,232,255,.07),0 8px 26px rgba(0,8,16,.32)}
+.tool-point .tp-icon{font-size:26px;flex-shrink:0;line-height:1.3}
+.tool-point h3{font-size:16px;font-weight:700;color:var(--heading);margin-bottom:4px}
+.tool-point p{font-size:13px;color:#8fa6b8;line-height:1.7;margin:0}
+.tool-shot img{width:100%;display:block;border-radius:16px;border:1px solid rgba(0,200,255,.28);box-shadow:0 0 0 1px rgba(0,200,255,.08),0 20px 60px rgba(0,0,0,.55),0 0 80px rgba(0,200,255,.20)}
+[data-theme="light"] .tool-point{background:rgba(255,255,255,.55);border-color:rgba(0,0,0,.08);box-shadow:inset 0 1px 0 rgba(255,255,255,.7),0 8px 24px rgba(0,0,0,.06)}
+[data-theme="light"] .tool-point p{color:#33445c}
+@media(max-width:900px){
+  .tool-showcase{grid-template-columns:1fr;gap:36px}
+  .tool-shot{max-width:520px;margin:0 auto;width:100%}
+}
