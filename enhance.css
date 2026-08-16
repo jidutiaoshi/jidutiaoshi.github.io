@@ -1263,8 +1263,8 @@ h2 .hl{
 .jd-glow,.jd-spot{position:fixed;top:0;left:0;right:0;bottom:0;pointer-events:none}
 .jd-fluid{z-index:0}
 .jd-caustic{z-index:1;mix-blend-mode:screen;opacity:.15}
-.jd-glow{z-index:1;mix-blend-mode:screen;background:radial-gradient(ellipse 55% 45% at 50% -8%,rgba(0,200,255,.26) 0%,rgba(0,120,200,.10) 40%,transparent 66%)}
-.jd-spot{z-index:2;mix-blend-mode:screen;background:radial-gradient(620px circle at var(--mx,50%) var(--my,30%),rgba(0,200,255,.11),transparent 60%)}
+.jd-glow{z-index:1;mix-blend-mode:screen;background:radial-gradient(ellipse 55% 45% at 50% -8%,rgba(0,200,255,.15) 0%,rgba(0,120,200,.05) 40%,transparent 66%)}
+.jd-spot{z-index:2;mix-blend-mode:screen;background:radial-gradient(620px circle at var(--mx,50%) var(--my,30%),rgba(0,200,255,.06),transparent 60%)}
 .jd-ringwrap{position:absolute;left:50%;top:44%;transform:translate(-50%,-50%);z-index:2;pointer-events:none}
 .jd-ring{width:340px;height:340px;border-radius:50%;position:relative;border:1px solid rgba(0,200,255,.14);animation:jdSpin 18s linear infinite}
 .jd-ring::before{content:'';position:absolute;top:18px;left:18px;right:18px;bottom:18px;border-radius:50%;border:1px dashed rgba(0,200,255,.12)}
@@ -1285,6 +1285,9 @@ h2 .hl{
 @media(max-width:640px){
   .jd-ringwrap,.jd-core{display:none}
   .jd-caustic{opacity:.08}
+  /* 移动端:关掉顶光/光斑(太亮) + 关流体画布(hero-fluid.js 已跳过,省 GPU/电) */
+  .jd-glow,.jd-spot{display:none}
+  .jd-fluid,.jd-caustic{display:none}
 }
 
 /* ── 全站深海统一:子页面 page-hero + 卡片玻璃 ── */

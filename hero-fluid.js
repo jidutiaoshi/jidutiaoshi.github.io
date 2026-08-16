@@ -53,13 +53,14 @@
   // 3. 焦散(移动端跳过,省一个 WebGL 上下文)
   if (!/Mobi|Android/i.test(navigator.userAgent)) initCaustic(caustic);
 
-  // 4. 流体:WebGL 可用才加载
+  // 4. 流体:WebGL 可用才加载(移动端跳过,省 GPU/电,用 CSS 兜底)
   var test = document.createElement('canvas');
   var webglOK = !!(window.WebGLRenderingContext && (test.getContext('webgl2') || test.getContext('webgl')));
-  if (!webglOK) return;
+  var isMobile = /Mobi|Android/i.test(navigator.userAgent);
+  if (!webglOK || isMobile) return;
 
   var s = document.createElement('script');
-  s.src = '/fluid-jiduos.js?v=2';
+  s.src = '/fluid-jiduos.js?v=3';
   s.onload = function () {
     var F = window.__jiduFluid;
     if (!F || !F.splat) return;

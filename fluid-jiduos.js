@@ -49,7 +49,7 @@ let config = {
     BLOOM: true,
     BLOOM_ITERATIONS: 8,
     BLOOM_RESOLUTION: 256,
-    BLOOM_INTENSITY: 0.8,
+    BLOOM_INTENSITY: 0.55,
     BLOOM_THRESHOLD: 0.4,
     BLOOM_SOFT_KNEE: 0.7,
     SUNRAYS: true,
@@ -1068,9 +1068,9 @@ let lastUpdateTime = Date.now();
 let colorUpdateTimer = 0.0;
 setInterval(() => {
     if (config.PAUSED) return;
-    let c = generateColor(); c.g *= 0.9; c.b *= 0.9;
+    let c = generateColor(); c.g *= 0.7; c.b *= 0.7;
     splat(Math.random(), Math.random(), 1100 * (Math.random() - 0.5), 1100 * (Math.random() - 0.5), c);
-}, 600);
+}, 800);
 window.__jiduFluidIdle = false;
 document.addEventListener('visibilitychange', () => { window.__jiduFluidIdle = document.hidden; });
 window.__jiduFluid = { splat, generateColor, config };
