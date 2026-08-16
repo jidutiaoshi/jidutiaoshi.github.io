@@ -15,7 +15,7 @@
     return e;
   }
 
-  // 1. 注入背景层(绝对定位,文案 z-index:5 在其上)
+  // 1. 注入背景层(流体/焦散/光晕/光斑 = 全页 fixed;旋转环/核芯 = 仅首页 hero 内)
   var fluid = el('canvas', 'jd-fluid', 'fluid-canvas');
   var caustic = el('canvas', 'jd-caustic');
   var glow = el('div', 'jd-glow');
@@ -23,28 +23,25 @@
   var ringwrap = el('div', 'jd-ringwrap');
   ringwrap.innerHTML = '<div class="jd-ring"><span class="jd-dot"></span></div>';
   var core = el('div', 'jd-core');
-  hero.appendChild(fluid);
-  hero.appendChild(caustic);
-  hero.appendChild(glow);
+  document.body.appendChild(fluid);
+  document.body.appendChild(caustic);
+  document.body.appendChild(glow);
+  document.body.appendChild(spot);
   if (!isPageHero) {
     hero.appendChild(ringwrap);
     hero.appendChild(core);
   }
-  hero.appendChild(spot);
 
-  // 1.5 让两个 canvas 精确铺满 hero(px)。canvas 是替换元素,
-  // 对 auto 高度的父级百分比高度会退化为 300x150 默认尺寸,故用 JS 量取真实宽高。
+  // 1.5 让两个 canvas 精确铺满视口(px)。canvas 是替换元素,百分比高度会退化,故用 JS 量取视口宽高。
   function fitCanvas() {
-    var r = hero.getBoundingClientRect();
-    var w = Math.max(1, Math.round(r.width));
-    var h = Math.max(1, Math.round(r.height));
+    var w = Math.max(1, window.innerWidth);
+    var h = Math.max(1, window.innerHeight);
     fluid.style.width = w + 'px';
     fluid.style.height = h + 'px';
     caustic.style.width = w + 'px';
     caustic.style.height = h + 'px';
   }
   fitCanvas();
-  if ('ResizeObserver' in window) new ResizeObserver(fitCanvas).observe(hero);
   window.addEventListener('resize', fitCanvas);
 
   // 2. 鼠标光斑跟随
@@ -67,31 +64,21 @@
     var F = window.__jiduFluid;
     if (!F || !F.splat) return;
 
-    // 组合暂停:页面隐藏 OR hero 滚出视口 → 完全停渲染(省 GPU)
+    // 全页背景:只在页面隐藏时暂停(省 GPU)
     function syncIdle() {
-      var r = hero.getBoundingClientRect();
-      var off = r.bottom < 0 || r.top > window.innerHeight;
-      window.__jiduFluidIdle = document.hidden || off;
+      window.__jiduFluidIdle = document.hidden;
     }
     document.addEventListener('visibilitychange', syncIdle);
-    if ('IntersectionObserver' in window) {
-      new IntersectionObserver(syncIdle, { threshold: 0 }).observe(hero);
-    } else {
-      window.addEventListener('scroll', syncIdle, { passive: true });
-    }
     syncIdle();
 
-    // 悬停轻扰:鼠标划过带起水流(克制强度保护文字)
+    // 悬停轻扰:鼠标划过带起水流(全页跟随,克制强度保护文字)
     var lx = 0, ly = 0, lt = 0;
     window.addEventListener('mousemove', function (e) {
-      var r = fluid.getBoundingClientRect();
-      if (r.bottom < 0 || r.top > window.innerHeight) return;
-      if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) return;
       var now = performance.now();
       if (now - lt < 120) return;
       lt = now;
-      var nx = (e.clientX - r.left) / r.width;
-      var ny = (e.clientY - r.top) / r.height;
+      var nx = e.clientX / window.innerWidth;
+      var ny = e.clientY / window.innerHeight;
       var dx = (nx - lx) * 160;
       var dy = (ny - ly) * 160;
       lx = nx; ly = ny;

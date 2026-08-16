@@ -1259,8 +1259,8 @@ h2 .hl{
 .download-box p{color:#8fa6b8;font-size:14px;line-height:1.6;margin:0}
 
 /* ── 深海流体 Hero 背景(hero-fluid.js 注入) ── */
-.jd-fluid,.jd-caustic{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;display:block}
-.jd-glow,.jd-spot{position:absolute;top:0;left:0;right:0;bottom:0;pointer-events:none}
+.jd-fluid,.jd-caustic{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;display:block}
+.jd-glow,.jd-spot{position:fixed;top:0;left:0;right:0;bottom:0;pointer-events:none}
 .jd-fluid{z-index:0}
 .jd-caustic{z-index:1;mix-blend-mode:screen;opacity:.15}
 .jd-glow{z-index:1;mix-blend-mode:screen;background:radial-gradient(ellipse 55% 45% at 50% -8%,rgba(0,200,255,.26) 0%,rgba(0,120,200,.10) 40%,transparent 66%)}
@@ -1288,14 +1288,10 @@ h2 .hl{
 }
 
 /* ── 全站深海统一:子页面 page-hero + 卡片玻璃 ── */
-/* 子页面顶部标题区深海背景(与首页 hero 同族色系,占约半屏,内容露出来) */
+/* 子页面顶部标题区(透明,让全页流体透出来;标题居中) */
 .page-hero{
   min-height:50vh;
   display:flex;flex-direction:column;align-items:center;justify-content:center;
-  background:
-    radial-gradient(ellipse 55% 45% at 50% -8%, rgba(0,200,255,.20) 0%, rgba(0,120,200,.08) 40%, transparent 66%),
-    radial-gradient(ellipse 45% 55% at 82% 18%, rgba(0,150,220,.11) 0%, transparent 55%),
-    linear-gradient(180deg, #06182a 0%, #02070f 100%);
 }
 /* 子页面主标题渐变(同首页「浮出水面」) */
 .page-hero h1{
