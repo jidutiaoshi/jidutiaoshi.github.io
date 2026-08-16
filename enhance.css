@@ -1288,6 +1288,9 @@ h2 .hl{
   /* 移动端:关掉顶光/光斑(太亮) + 关流体画布(hero-fluid.js 已跳过,省 GPU/电) */
   .jd-glow,.jd-spot{display:none}
   .jd-fluid,.jd-caustic{display:none}
+  /* 移动端静态深海渐变兜底(替代 WebGL 流体,不耗 GPU 但有质感) */
+  body{background:linear-gradient(180deg,#0a1a2e 0%,#05101e 45%,#030609 100%) !important}
+  body::before{opacity:.55 !important;background:radial-gradient(ellipse 90% 45% at 25% 0%,rgba(0,160,230,.20) 0%,transparent 60%),radial-gradient(ellipse 80% 50% at 80% 20%,rgba(0,110,200,.13) 0%,transparent 55%),radial-gradient(ellipse 70% 55% at 50% 100%,rgba(0,80,170,.15) 0%,transparent 60%) !important}
 }
 
 /* ── 全站深海统一:子页面 page-hero + 卡片玻璃 ── */
