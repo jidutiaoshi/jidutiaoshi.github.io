@@ -1,5 +1,5 @@
 {
-  "version": "2.0.5",
-  "url": "https://wwbmd.lanzout.com/ix0NB43p55gj",
-  "notes": "新增 MSI 中断优化 · 网卡节能/唤醒开关(优化中心 86/87) · 内存 XMP 检测引导 · Resizable BAR / SAM 检测引导"
+  "version": "2.0.6",
+  "url": "https://wwbmd.lanzout.com/in7nG441ngti",
+  "notes": "修复开机输入法失效（移除禁用触控键盘/手写优化项） · 新增 MSI 中断优化 · 网卡节能/唤醒开关 · 内存 XMP 检测引导 · Resizable BAR / SAM 检测引导"
 }
